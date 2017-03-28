@@ -1,0 +1,58 @@
+/* pages/index/index.wxss */
+.header{
+    font-size: 20rpx;
+    text-align: center;
+}
+.lang{
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-around;
+    text-align: center;
+}
+.lang button{
+    margin: 1rpx 1rpx;
+}
+.container{
+	display: flex;
+	justify-content: space-between;
+	flex-direction: column;
+	width: 750rpx;
+	height: 1000rpx;
+	/*border: 1px red solid;*/
+}
+.content{
+	/*border: 1px red solid;*/
+	text-align: center;
+	margin-top: 50rpx;
+}
+.display{
+	font-weight: bold;
+	line-height: 50rpx;
+	font-size: 37rpx;
+}
+.gallery{
+	display: block;
+	/*border: 1px red solid;*/
+}
+.photo{
+	display: block;
+	margin: 1rpx auto;
+	margin-bottom: 0rpx;
+	margin-bottom: 40rpx;
+	border-radius: 10rpx 10rpx;
+	width: 700rpx;
+}
+.photographer{
+	margin-top: 0rpx;
+	display: block;
+	width: 700rpx
+	font-size: 10rpx;
+	color: orange;
+	font-style: italic;
+	text-align: right;
+	position: relative;
+	top:-40rpx;
+	left: -30rpx;
+	opacity: 0.6;
+}
+

@@ -1,0 +1,15 @@
+<view class="header"></view>
+<view class="container">
+	<view class="content">
+	<text class="display">{{content}}</text>
+	</view>
+	<view class="gallery">
+	<image class="photo" src="{{image.src}}" mode="aspectFill" bindtap="changeImg"></image>
+	<text class="photographer">photo by {{image.photographer}}</text>
+	</view>
+</view>
+<view class="lang">
+	<button bindtap="changeLang" id='zh' type="{{btnType.zh}}" size="mini" plain="true" >中文</button>
+	<button bindtap="changeLang" id='en' type="{{btnType.en}}" size="mini" plain="true" >English</button>
+	<button bindtap="changeLang" id='jp' type="{{btnType.jp}}" size="mini" plain="true" >日本語</button>
+</view>
