@@ -104,10 +104,6 @@ Page({
         this.setData({
             image:getImg()
         });
-    },
-    //滑动图片
-    slide:function(e){
-        console.log(e);
     }
 });
 

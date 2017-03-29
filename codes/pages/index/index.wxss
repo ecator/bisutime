@@ -17,7 +17,7 @@
 	justify-content: space-between;
 	flex-direction: column;
 	width: 750rpx;
-	height: 1000rpx;
+	height: 1100rpx;
 	/*border: 1px red solid;*/
 }
 .content{
