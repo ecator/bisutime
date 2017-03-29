@@ -4,67 +4,80 @@
 		"day":{
 			"zh":"今天{{day}}",
 			"en":"Today is {{day}}",
-			"jp":"今日は{{day}}"
+			"jp":"今日は{{day}}",
+			"ru":"Сегодня {{day}}"
 		},
 		"holiday":{
 			"zh":"不过已经放假了哟",
-			"en":"It's on holiday",
-			"jp":"今は休暇期間だよ"
+			"en":"You ara on the vacation",
+			"jp":"今は休暇期間だよ",
+			"ru":"Но у тебя каникулы сейчас уже!"
 		},
 		"weekth":{
 			"zh":"开学第{{weekth}}周",
 			"en":"The {{weekth}} week of school",
-			"jp":"今学期の{{weekth}}周目"
+			"jp":"今学期の{{weekth}}周目",
+			"ru":"{{weekth}} неделя семестра"
 		},
 		"sunday":{
 			"zh":"明天就上课了，而且今天晚上还要断电",
 			"en":"Tomorrow you will go to school",
-			"jp":"明日は授業ですから\n今日はゆっくり休んでね"
+			"jp":"明日は授業ですから\n今日はゆっくり休んでね",
+			"ru":"Завтра есть пары, да ещё и электричество отключат сегодня ночью."
 		},
 		"saturday":{
 			"zh":"还有一天上课，抓紧时间浪吧",
 			"en":"You only have one day to go out",
-			"jp":"まだ一日間だ\n学校なんで行かなくていいから\n遊ぼう"
+			"jp":"まだ一日間だ\n学校なんで行かなくていいから\n遊ぼう",
+			"ru":"Остался только 1 выходной, давай!"
 		},
 		"morning":{
 			"zh":"还么有上课\n离早上第一节课还有{{next_time}}",
 			"en":"It's early to go to school\nThe first lesson will begin after {{next_time}}",
-			"jp":"おはようございます\n授業はまだ始まってないよ\nまだ{{next_time}}あるから\nもう少し寝坊していい"
+			"jp":"おはようございます\n授業はまだ始まってないよ\nまだ{{next_time}}あるから\nもう少し寝坊していい",
+			"ru":"Занятие не начались ещё \nОсталось {{next_time}} до первой пары",
 		},
 		"lesson":{
 			"zh":"现在正在上第{{time}}小节课\n离下课还有{{next_time}}",
 			"en":"Now it's the {{time}} lesson\nThis class will be over after {{next_time}}",
-			"jp":"いまは{{time}}限目\n休憩はまだ{{next_time}}あるから\nもうちょっと我慢してね"
+			"jp":"いまは{{time}}限目\n休憩はまだ{{next_time}}あるから\nもうちょっと我慢してね",
+			"ru":"Сейчас {{time}} занятие\nОсталось {{next_time}} до перерыва "
 		},
 		"evening":{
 			"zh":"现在已经放学了，赶快休息吧",
 			"en":"School is over,please have a rest",
-			"jp":"お疲れ様でした\nいまは放課後\n何か面白いことをやってみようか"
+			"jp":"お疲れ様でした\nいまは放課後\n何か面白いことをやってみようか",
+			"ru":"Занятия закончились, пора отдыхать "
 		},
 		"friday":{
 			"zh":"明天就是周六了，今天晚上不断电啦",
 			"en":"Tomorrow is Saturday\nHave a good day",
-			"jp":"明日はいよいよ土曜日だから\nどこかへ遊びにいくか"
+			"jp":"明日はいよいよ土曜日だから\nどこかへ遊びにいくか",
+			"ru":"Завтра суббота, сегодня вечером не отключат электричество, ура!"
 		},
 		"notfriday":{
 			"zh":"还有{{next_time}}开始第二天的课程\n今天要断电，不要熬夜哟",
 			"en":"The first lesson of tomorrow will begin after {{next_time}}\nDon't stay up late",
-			"jp":"明日の授業はまだ{{next_time}}ある\n今晩は停電の日だ\nご注意ください"
+			"jp":"明日の授業はまだ{{next_time}}ある\n今晩は停電の日だ\nご注意ください",
+			"ru":"До завтрашнего урока ещё {{next_time}}\nСегодня отключат электричество, не бодрствуй!",
 		},
 		"noon":{
 			"zh":"现在是午饭时间\n离下午上课还有{{next_time}}\n抓紧时间去吃午饭吧",
 			"en":"It's lunch time\nThe first lesson of afternoon will begin after {{next_time}}\nIt's high time to hava lunch",
-			"jp":"昼ごはんだよ\n午後の授業はまだ{{next_time}}ある\n早く昼ごはんを食べよう"
+			"jp":"昼ごはんだよ\n午後の授業はまだ{{next_time}}ある\n早く昼ごはんを食べよう",
+			"ru":"Сейчас у нас обед\nДо следующей пары осталось {{next_time}}\nПойди пообедать!"
 		},
 		"dinner":{
 			"zh":"现在是晚饭时间\n离晚上上课还有\n{{next_time}}\n赶快去吃晚饭吧",
 			"en":"It's dinner time\nThe first lesson of evening will begin after {{next_time}}\nIt's high time to dinner dinner",
-			"jp":"晩ごはんだよ\n夜の授業はまだ{{next_time}}ある\n早く晩ごはんを食べよう"
+			"jp":"晩ごはんだよ\n夜の授業はまだ{{next_time}}ある\n早く晩ごはんを食べよう",
+			"ru":"У нас ужин сейчас\nДо вечерних занятий осталось {{next_time}}\nПойди поужинать!"
 		},
 		"break":{
 			"zh":"现在是第{{before}}小节和第{{next}}小节课间休息时间\n离下节课还有{{next_time}}\n稍微休息一下吧",
 			"en":"It's the break time between the {{before}} lesson and the {{next}} lesson\nThe next lesson will begin after {{next_time}}\nPlease take a break",
-			"jp":"いまは{{before}}限目と{{next}}限目の間の休憩時間\n次の授業はまだ{{next_time}}あるが\n時間が短いから\n勉強しよう"
+			"jp":"いまは{{before}}限目と{{next}}限目の間の休憩時間\n次の授業はまだ{{next_time}}あるが\n時間が短いから\n勉強しよう",
+			"ru":"Сейчас {{before}} перерыв\nПерерыв остался {{next_time}}\nХоть отдохни!"
 		}
 	},
 	"imgs":[
@@ -119,6 +132,10 @@
 		{
 			"src":"https://ecator.github.io/bisutime/img/snow-13.jpg",
 			"photographer":"吴岩"
+		},
+		{
+			"src":"https://ecator.github.io/bisutime/img/dasu-1.jpg",
+			"photographer":"郭树懒"
 		}
 	]
 }

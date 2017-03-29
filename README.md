@@ -38,6 +38,7 @@
 - en：英语
 - jp：日语
 - kr：韩语
+- ru: 俄语
 ## imgs：图片映射数组
 - src：图片绝对地址
 - photographer：作者

@@ -9,7 +9,7 @@
 	</view>
 </view>
 <view class="lang">
-	<button bindtap="changeLang" id='zh' type="{{btnType.zh}}" size="mini" plain="true" >中文</button>
-	<button bindtap="changeLang" id='en' type="{{btnType.en}}" size="mini" plain="true" >English</button>
-	<button bindtap="changeLang" id='jp' type="{{btnType.jp}}" size="mini" plain="true" >日本語</button>
+	<block wx:key="index" wx:for="{{btns}}">
+		<button bindtap="changeLang" id="{{item.id}}" type="{{item.type}}" size="mini" plain="true" >{{item.name}}</button>
+	</block>
 </view>
