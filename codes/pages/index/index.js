@@ -6,8 +6,9 @@ start.setHours(0);
 start.setMinutes(0);
 start.setSeconds(0);
 start.setFullYear(2017);
-start.setMonth(2-1);
 start.setDate(19);
+start.setMonth(1);
+console.log("本学期开始时间：%s",start);
 var bisutime=new BISUTIME(start);
 // console.log(bisutime.getWeekth(),bisutime.getTime());
 //默认中文展示
@@ -39,11 +40,12 @@ Page({
             content:getDisplay(currentLan)
         });
         //设置定时刷新content
+        return;
         setInterval(function(){
             this.setData({
                 content:getDisplay(currentLan)
             });
-        }.bind(this),1000)
+        }.bind(this),1000);
     },
     onShareAppMessage:function(){
         return {
@@ -296,19 +298,19 @@ function getDisplay(lan){
 //随机返回一个图片对象，{src:xx,photographer:xx}
 function getImg(){
     var imgs={
-        '../../img/snow-1.jpg':"吴岩",
-        '../../img/snow-2.jpg':"吴岩",
-        '../../img/snow-3.jpg':"吴岩",
-        '../../img/snow-4.jpg':"吴岩",
-        '../../img/snow-5.jpg':"吴岩",
-        '../../img/snow-6.jpg':"吴岩",
-        '../../img/snow-7.jpg':"吴岩",
-        '../../img/snow-8.jpg':"吴岩",
-        '../../img/snow-9.jpg':"吴岩",
-        '../../img/snow-10.jpg':"吴岩",
-        '../../img/snow-11.jpg':"吴岩",
-        '../../img/snow-12.jpg':"吴岩",
-        '../../img/snow-13.jpg':"吴岩"
+        'https://ecator.github.io/bisutime/img/snow-1.jpg':"吴岩",
+        'https://ecator.github.io/bisutime/img/snow-2.jpg':"吴岩",
+        'https://ecator.github.io/bisutime/img/snow-3.jpg':"吴岩",
+        'https://ecator.github.io/bisutime/img/snow-4.jpg':"吴岩",
+        'https://ecator.github.io/bisutime/img/snow-5.jpg':"吴岩",
+        'https://ecator.github.io/bisutime/img/snow-6.jpg':"吴岩",
+        'https://ecator.github.io/bisutime/img/snow-7.jpg':"吴岩",
+        'https://ecator.github.io/bisutime/img/snow-8.jpg':"吴岩",
+        'https://ecator.github.io/bisutime/img/snow-9.jpg':"吴岩",
+        'https://ecator.github.io/bisutime/img/snow-10.jpg':"吴岩",
+        'https://ecator.github.io/bisutime/img/snow-11.jpg':"吴岩",
+        'https://ecator.github.io/bisutime/img/snow-12.jpg':"吴岩",
+        'https://ecator.github.io/bisutime/img/snow-13.jpg':"吴岩"
     };
     var src=Object.keys(imgs);
     var index=parseInt(Math.random()*src.length);
@@ -321,12 +323,12 @@ function getImg(){
 function formatHM(hm,lan){
     var hours={
         "zh":"小时",
-        "en":"hours",
+        "en":" hours",
         "jp":"時"
     };
     var mins={
         "zh":"分钟",
-        "en":"mins",
+        "en":" mins",
         "jp":"分間"
     };
     if(hm.hours){

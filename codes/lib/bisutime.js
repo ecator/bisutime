@@ -83,6 +83,8 @@ class BISUTIME{
 
     //获取开学第几周
     getWeekth(){
+        // console.log(new Date,theWeekth());
+        // console.log(this.start,theWeekth(this.start));
         return theWeekth()-theWeekth(this.start);
     }
     //获取阿拉伯数字星期几，格式 1-7

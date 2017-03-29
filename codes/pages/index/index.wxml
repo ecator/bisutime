@@ -1,4 +1,4 @@
-<view class="header"></view>
+<view class="header">{{header}}</view>
 <view class="container">
 	<view class="content">
 	<text class="display">{{content}}</text>

@@ -1,3 +1,70 @@
 {
-	'name':"hell bisutime"
+	"name":"hell bisutime",
+	"format":{
+		"day":{
+			"zh":"今天{{day}}",
+			"en":"Today is {{day}}",
+			"jp":"今日は{{day}}"
+		},
+		"holiday":{
+			"zh":"不过已经放假了哟",
+			"en":"It's on holiday",
+			"jp":"今は休暇期間だよ"
+		},
+		"weekth":{
+			"zh":"开学第{{weekth}}周",
+			"en":"The {{weekth}} week of school",
+			"jp":"今学期の{{weekth}}周目"
+		},
+		"sunday":{
+			"zh":"明天就上课了，而且今天晚上还要断电",
+			"en":"Tomorrow you will go to school",
+			"jp":"明日は授業ですから\n今日はゆっくり休んでね"
+		},
+		"saturday":{
+			"zh":"还有一天上课，抓紧时间浪吧",
+			"en":"You only have one day to go out",
+			"jp":"まだ一日間だ\n学校なんで行かなくていいから\n遊ぼう"
+		},
+		"morning":{
+			"zh":"还么有上课\n离早上第一节课还有{{next_time}}",
+			"en":"It's early to go to school\nIt'll be {{next_time}} to go to school",
+			"jp":"おはようございます\n授業はまだ始まってないよ\nまだ{{next_time}}あるから\nもう少し寝坊していい"
+		},
+		"lesson":{
+			"zh":"现在正在上第{{time}}小节课\n离下课还有{{next_time}}",
+			"en":"Now it's the {{time}} lesson\nIt'll be {{next_time}} until this class is over",
+			"jp":"いまは{{time}}限目\n休憩はまだ{{next_time}}あるから\nもうちょっと我慢してね"
+		},
+		"evening":{
+			"zh":"现在已经放学了，赶快休息吧",
+			"en":"School is over,please have a rest",
+			"jp":"お疲れ様でした\nいまは放課後\n何か面白いことをやってみようか"
+		},
+		"friday":{
+			"zh":"明天就是周六了，今天晚上不断电啦",
+			"en":"Tomorrow is Saturday,have a good day",
+			"jp":"明日はいよいよ土曜日だから\nどこかへ遊びにいくか"
+		},
+		"notfriday":{
+			"zh":"今天要断电，不要熬夜哟",
+			"en":"Don't stay up late",
+			"jp":"今晩は停電の日だ\nご注意ください"
+		},
+		"noon":{
+			"zh":"现在是午饭时间\n离下午上课还有{{next_time}}\n抓紧时间去吃午饭吧",
+			"en":"It's lunch time\nIt'll be {{next_time}} until next class begins afternoon\nIt's high time to hava lunch",
+			"jp":"昼ごはんだよ\n午後の授業はまだ{{next_time}}ある\n早く昼ごはんを食べよう"
+		},
+		"dinner":{
+			"zh":"现在是晚饭时间\n离晚上上课还有\n{{next_time}}\n赶快去吃晚饭吧",
+			"en":"It's dinner time\nIt'll be {{next_time}} until next class begins evening\nIt's high time to dinner dinner",
+			"jp":"晩ごはんだよ\n夜の授業はまだ{{next_time}}ある\n早く晩ごはんを食べよう"
+		},
+		"break":{
+			"zh":"现在是第{{before}}小节和第{{next}}小节课间休息时间\n离下节课还有{{next_time}}\n稍微休息一下吧",
+			"en":"It's the break time between the {{before}} lesson and the {{next}} lesson\nIt'll be {{next_time}} until next class begins\nPlease take a break",
+			"jp":"いまは{{before}}限目と{{next}}限目の間の休憩時間\n次の授業はまだ{{next_time}}あるが\n時間が短いから\n勉強しよう"
+		}
+	}
 }
