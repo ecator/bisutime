@@ -1,5 +1,5 @@
 {
-	"name":"hell bisutime",
+	"name":"hello bisutime",
 	"format":{
 		"day":{
 			"zh":"今天{{day}}",
@@ -47,9 +47,9 @@
 			"jp":"明日はいよいよ土曜日だから\nどこかへ遊びにいくか"
 		},
 		"notfriday":{
-			"zh":"今天要断电，不要熬夜哟",
-			"en":"Don't stay up late",
-			"jp":"今晩は停電の日だ\nご注意ください"
+			"zh":"还有{{next_time}}开始第二天的课程\n今天要断电，不要熬夜哟",
+			"en":"It'll be {{next_time}} to have class tomorrow\nDon't stay up late",
+			"jp":"明日の授業はまだ{{next_time}}ある今晩は停電の日だ\nご注意ください"
 		},
 		"noon":{
 			"zh":"现在是午饭时间\n离下午上课还有{{next_time}}\n抓紧时间去吃午饭吧",

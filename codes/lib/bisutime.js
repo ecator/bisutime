@@ -169,6 +169,7 @@ class BISUTIME{
                 break;
             default:
                 //放学
+                return this.makeHM(24 * 60 - totalTime+8*60);
         }
     }
 
