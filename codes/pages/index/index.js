@@ -25,27 +25,34 @@ var langs={
     'jp':"default"
 };
 setLanguage(currentLan);
+//远程配置
+var config={};
 Page({
     data:{
-        btnType:langs,
-        image:getImg()
+        btnType:langs
     },
     onLoad:function(){
+        //绑定setData
+        var setData=this.setData.bind(this);
         //设置相应语言标题
         wx.setNavigationBarTitle({
             title: titles[currentLan]
         });
-        //显示container内容
-        this.setData({
-            content:getDisplay(currentLan)
-        });
-        //设置定时刷新content
-        return;
-        setInterval(function(){
-            this.setData({
-                content:getDisplay(currentLan)
+        //获取配置
+        getConfig(function(res){
+            config=res;
+            console.log('当前配置：',config);
+            setData({
+                content:getDisplay(currentLan),
+                image:getImg()
             });
-        }.bind(this),1000);
+            //设置定时刷新content
+            setInterval(function(){
+                setData({
+                    content:getDisplay(currentLan)
+                });
+            },1000);
+        });
     },
     onShareAppMessage:function(){
         return {
@@ -295,7 +302,7 @@ function getDisplay(lan){
     return 'hell world';
 }
 
-//随机返回一个图片对象，{src:xx,photographer:xx}
+//从全局config对象中返回一个图片对象，{src:xx,photographer:xx}
 function getImg(){
     var imgs={
         'https://ecator.github.io/bisutime/img/snow-1.jpg':"吴岩",
@@ -345,4 +352,31 @@ function formatHM(hm,lan){
     }else{
         return hm.mins+mins[lan];
     }
+}
+
+//获取远程配置并储存到Storage['config']中，结果传递到callback中
+function getConfig(callback){
+    var config={};
+    wx.request({
+        url:app.data.server+'config.json',
+        success:function(res){
+            // console.log(res);
+            if (res.statusCode==200) {
+                //微信貌似会自动转换json对象
+                config=res.data
+                //写入缓存
+                wx.setStorageSync('config',config);
+            }else{
+                //返回缓存
+                config=wx.getStorageSync('config');
+
+            }
+        },
+        fail:function(){
+            config=wx.getStorageSync('config');
+        },
+        complete:function(){
+            callback(config);
+        }
+    });
 }
