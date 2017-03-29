@@ -104,6 +104,10 @@ Page({
         this.setData({
             image:getImg()
         });
+    },
+    //滑动图片
+    slide:function(e){
+        console.log(e);
     }
 });
 
@@ -263,7 +267,7 @@ function getConfig(callback){
             // console.log(res);
             if (res.statusCode==200) {
                 //微信貌似会自动转换json对象
-                config=res.data
+                config=typeof(res.data)=='object'?res.data:JSON.parse(res.data);
                 //写入缓存
                 wx.setStorageSync('config',config);
             }else{

@@ -3,7 +3,7 @@
 	<view class="content">
 	<text class="display">{{content}}</text>
 	</view>
-	<view class="gallery">
+	<view bindtouchmove="slide" class="gallery">
 	<image class="photo" src="{{image.src}}" mode="aspectFill" bindtap="changeImg"></image>
 	<text class="photographer">photo by {{image.photographer}}</text>
 	</view>

@@ -35,7 +35,7 @@
 			"zh":"还么有上课\n离早上第一节课还有{{next_time}}",
 			"en":"It's early to go to school\nThe first lesson will begin after {{next_time}}",
 			"jp":"おはようございます\n授業はまだ始まってないよ\nまだ{{next_time}}あるから\nもう少し寝坊していい",
-			"ru":"Занятие не начались ещё \nОсталось {{next_time}} до первой пары",
+			"ru":"Занятие не начались ещё \nОсталось {{next_time}} до первой пары"
 		},
 		"lesson":{
 			"zh":"现在正在上第{{time}}小节课\n离下课还有{{next_time}}",
@@ -59,7 +59,7 @@
 			"zh":"还有{{next_time}}开始第二天的课程\n今天要断电，不要熬夜哟",
 			"en":"The first lesson of tomorrow will begin after {{next_time}}\nDon't stay up late",
 			"jp":"明日の授業はまだ{{next_time}}ある\n今晩は停電の日だ\nご注意ください",
-			"ru":"До завтрашнего урока ещё {{next_time}}\nСегодня отключат электричество, не бодрствуй!",
+			"ru":"До завтрашнего урока ещё {{next_time}}\nСегодня отключат электричество, не бодрствуй!"
 		},
 		"noon":{
 			"zh":"现在是午饭时间\n离下午上课还有{{next_time}}\n抓紧时间去吃午饭吧",
@@ -136,6 +136,14 @@
 		{
 			"src":"https://ecator.github.io/bisutime/img/dasu-1.jpg",
 			"photographer":"郭树懒"
+		},
+		{
+			"src":"https://ecator.github.io/bisutime/img/dongdong-1.jpg",
+			"photographer":"Simon Chung"
+		},
+		{
+			"src":"https://ecator.github.io/bisutime/img/dongdong-2.jpg",
+			"photographer":"Simon Chung"
 		}
 	]
 }
