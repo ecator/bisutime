@@ -39,12 +39,11 @@ Page({
             content:getDisplay(currentLan)
         });
         //设置定时刷新content
-        var that=this;
         setInterval(function(){
-            that.setData({
+            this.setData({
                 content:getDisplay(currentLan)
             });
-        },1000)
+        }.bind(this),1000)
     },
     onShareAppMessage:function(){
         return {
@@ -191,7 +190,7 @@ function getDisplay(lan){
                 return res;
             }else if (time>0 && time<=12 && parseInt(time)==time) {
                 //上课中
-                res+="\nNow it's the "+oridinal[time-1]+"lesson";
+                res+="\nNow it's the "+ordinal[time-1]+"lesson";
                 res+="\nIt'll be "+formatHM(bisutime.getNext(),currentLan)+" until this class is over";
                 return res;
             }else if(time>12){

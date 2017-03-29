@@ -1,5 +1,5 @@
 App({
     onLaunch:function(){
-        console.log('启动');
+        console.log('hello bisutime');
     }
 });

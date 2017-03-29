@@ -97,73 +97,73 @@ class BISUTIME{
         var totalTime=now.getHours()*60+now.getMinutes();
         switch(this.getTime()){
             case 0:
-                return makeHM(8 * 60 - totalTime);
+                return this.makeHM(8 * 60 - totalTime);
                 break;
             case 1:
-                return makeHM(8 * 60 + 45 - totalTime);
+                return this.makeHM(8 * 60 + 45 - totalTime);
                 break;
             case 1.5:
-                return makeHM(8 * 60 + 50 - totalTime);
+                return this.makeHM(8 * 60 + 50 - totalTime);
                 break;
             case 2:
-                return makeHM(9 * 60 + 35 - totalTime);
+                return this.makeHM(9 * 60 + 35 - totalTime);
                 break;
             case 2.5:
-                return makeHM(9 * 60 + 50 - totalTime);
+                return this.makeHM(9 * 60 + 50 - totalTime);
                 break;
             case 3:
-                return makeHM(10 * 60 + 35 - totalTime);
+                return this.makeHM(10 * 60 + 35 - totalTime);
                 break;
             case 3.5:
-                return makeHM(10 * 60 + 40 - totalTime);
+                return this.makeHM(10 * 60 + 40 - totalTime);
                 break;
             case 4:
-                return makeHM(11 * 60 + 25 - totalTime);
+                return this.makeHM(11 * 60 + 25 - totalTime);
                 break;
             case 4.5:
-                return makeHM(12 * 60 + 15 - totalTime);
+                return this.makeHM(12 * 60 + 15 - totalTime);
                 break;
             case 5:
-                return makeHM(12 * 60 + 15 - totalTime);
+                return this.makeHM(12 * 60 + 15 - totalTime);
                 break;
             case 5.5:
-                return makeHM(13 * 60 + 20 - totalTime);
+                return this.makeHM(13 * 60 + 20 - totalTime);
                 break;
             case 6:
-                return makeHM(14 * 60 + 5 - totalTime);
+                return this.makeHM(14 * 60 + 5 - totalTime);
                 break;
             case 6.5:
-                return makeHM(14 * 60 + 10 - totalTime);
+                return this.makeHM(14 * 60 + 10 - totalTime);
                 break;
             case 7:
-                return makeHM(14 * 60 + 55 - totalTime);
+                return this.makeHM(14 * 60 + 55 - totalTime);
                 break;
             case 7.5:
-                return makeHM(15 * 60 + 10 - totalTime);
+                return this.makeHM(15 * 60 + 10 - totalTime);
                 break;
             case 8:
-                return makeHM(15 * 60 + 55 - totalTime);
+                return this.makeHM(15 * 60 + 55 - totalTime);
                 break;
             case 8.5:
-                return makeHM(16 * 60 - totalTime);
+                return this.makeHM(16 * 60 - totalTime);
                 break;
             case 9:
-                return makeHM(16 * 60 + 45 - totalTime);
+                return this.makeHM(16 * 60 + 45 - totalTime);
                 break;
             case 9.5:
-                return makeHM(16 * 60 + 50 - totalTime);
+                return this.makeHM(16 * 60 + 50 - totalTime);
                 break;
             case 10:
-                return makeHM(17 * 60 + 35 - totalTime);
+                return this.makeHM(17 * 60 + 35 - totalTime);
                 break;
             case 10.5:
-                return makeHM(18 * 60 + 30 - totalTime);
+                return this.makeHM(18 * 60 + 30 - totalTime);
                 break;
             case 11.5:
-                return makeHM(19 * 60 + 20 - totalTime);
+                return this.makeHM(19 * 60 + 20 - totalTime);
                 break;
             case 12:
-                return makeHM(20 * 60 + 5 - totalTime);
+                return this.makeHM(20 * 60 + 5 - totalTime);
                 break;
             default:
                 //放学
