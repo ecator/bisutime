@@ -209,7 +209,12 @@ function formatHM(hm,lan){
     };
     if(hm.hours){
         if(hm.mins){
-            return hm.hours+hours[lan]+hm.mins+mins[lan];
+            if(lan=='en'){
+                //英语有空格
+                return hm.hours+hours[lan]+" "+hm.mins+mins[lan];
+            }else{
+                return hm.hours+hours[lan]+hm.mins+mins[lan];
+            }
         }else{
             if(lan=='jp'){
                 //日语要特殊出里
