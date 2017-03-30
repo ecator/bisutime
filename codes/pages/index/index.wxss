@@ -1,7 +1,20 @@
 /* pages/index/index.wxss */
-.header{
-    font-size: 20rpx;
-    text-align: center;
+.notification{
+	display: block;
+	width: 700rpx;
+	margin: 1rpx auto;
+	text-align: center;
+}
+.header .notification{
+	font-size: 25rpx;
+	color: red;
+}
+.footer{
+	margin-top: 10rpx;
+}
+.footer .notification{
+	font-size: 18rpx;
+	color: gray;
 }
 .lang{
 	display: flex;
@@ -43,8 +56,8 @@
 	width: 700rpx;
 }
 .photographer{
-	margin-top: 0rpx;
 	display: block;
+	margin-top: 0rpx;
 	width: 700rpx
 	font-size: 10rpx;
 	color: orange;
@@ -52,7 +65,7 @@
 	text-align: right;
 	position: relative;
 	top:-40rpx;
-	left: -30rpx;
+	padding-right: 35rpx;
 	opacity: 0.6;
 }
 

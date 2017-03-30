@@ -11,27 +11,36 @@ var langs=[
         id:"zh",
         type:"default",
         name:"中文",
-        title:"二外时间"
+        title:"二外时间",
+        loading:"玩命加载中"
     },
     {
         id:"en",
         type:"default",
         name:"English",
-        title:"BISU TIME"
+        title:"BISU TIME",
+        loading:"loading"
     },
     {
         id:"jp",
         type:"default",
         name:"日本語",
-        title:"二外タイム"
+        title:"二外タイム",
+        loading:"お帰り"
     },
     {
         id:"ru",
         type:"default",
         name:"Русский",
-        title:"Университетское время"
+        title:"Университетское время",
+        loading:"погрузки"
     }
 ];
+//加载提示
+wx.showLoading({
+    title:langs[langIndex].loading,
+    mask:true
+});
 //远程配置
 var config={};
 //注册页面
@@ -69,6 +78,8 @@ Page({
                     content:getDisplay()
                 });
             },1000);
+            //关闭加载框
+            wx.hideLoading();
         });
     },
     onShareAppMessage:function(){
