@@ -1,19 +1,11 @@
 var app=getApp();
 var BISUTIME=require("../../lib/bisutime");
-//以2017-2-17日为起始点初始化bisudtime对象
-var start=new Date;
-start.setHours(0);
-start.setMinutes(0);
-start.setSeconds(0);
-start.setFullYear(2017);
-start.setDate(19);
-start.setMonth(1);
-console.log("本学期开始时间：%s",start);
-var bisutime=new BISUTIME(start);
+//声明全局bisutime对象
+var bisutime={};
 // console.log(bisutime.getWeekth(),bisutime.getTime());
-//默认中文展示
+//全局语言索引，默认中文展示
 var langIndex=wx.getStorageSync('langIndex')?wx.getStorageSync('langIndex'):0;
-//声明不同语言的属性
+//全局语言属性数组
 var langs=[
     {
         id:"zh",
@@ -40,29 +32,38 @@ var langs=[
         title:"Университетское время"
     }
 ];
-setLanguage(langIndex);
 //远程配置
 var config={};
+//注册页面
 Page({
     data:{
-        btns:langs
+        btns:{}
     },
     onLoad:function(){
         //绑定setData
         var setData=this.setData.bind(this);
-        //设置相应语言标题
-        wx.setNavigationBarTitle({
-            title: langs[langIndex].title
-        });
         //获取配置
         getConfig(function(res){
+            //更新全局远程配置
             config=res;
             console.log('当前配置：',config);
+            //设置公告
             setData({
-                content:getDisplay(),
-                image:getImg()
+                notification:config.notification
             });
-            //设置定时刷新content
+            //声明起始日期
+            var start=new Date;
+            start.setHours(0);
+            start.setMinutes(0);
+            start.setSeconds(0);
+            start.setFullYear(config.start.year);
+            start.setDate(config.start.date);
+            start.setMonth(config.start.month);
+            console.log("本学期开始时间：%s",start);
+            bisutime=new BISUTIME(start);
+            //根据当前语言索引刷新界面
+            refreshUI();
+            //设置定时刷新时间显示
             setInterval(function(){
                 setData({
                     content:getDisplay()
@@ -86,18 +87,11 @@ Page({
                 break;
             }
         }
-        //设置当前语言为选中的语言
-        setLanguage(i);
+        //设置当前语言索引
+        langIndex=i;
         //刷新视图
-        this.setData({
-            btns:langs,
-            content:getDisplay(),
-            image:getImg()
-        });
-        //刷新导航条标题
-        wx.setNavigationBarTitle({
-            title:langs[langIndex].title
-        });
+        refreshUI();
+
     },
     //随机切换图片
     changeImg:function(){
@@ -107,18 +101,29 @@ Page({
     }
 });
 
-//设置当前语言的type为primary
-function setLanguage(lanIndex){
+//根据当前语言索引，设置对应语言type为primary,并刷新试图
+function refreshUI(){
+    var currentPages=getCurrentPages();
+    var currentPage=currentPages[currentPages.length-1];
     for(var i=0;i<langs.length;i++ ){
-        if(i==lanIndex){
+        if(i==langIndex){
             langs[i].type="primary";
         }else{
             langs[i].type="default";
         }
     }
-    //保存语言设置到缓存
-    wx.setStorageSync('langIndex', lanIndex);
-    langIndex=lanIndex
+    //保存语言索引到缓存
+    wx.setStorageSync('langIndex', langIndex);
+    //刷新界面语言
+    currentPage.setData({
+        btns:langs,
+        content:getDisplay(),
+        image:getImg()
+    });
+    //刷新导航条标题
+    wx.setNavigationBarTitle({
+        title:langs[langIndex].title
+    });
 }
 
 //根据语言显示content展示内容
@@ -212,7 +217,7 @@ function getDisplay(){
     return 'hello bisutime';
 }
 
-//从全局config对象中返回一个图片对象，{src:xx,photographer:xx}
+//从全局config对象中随机返回一个图片对象，{src:xx,photographer:xx}
 function getImg(){
     var imgs=config.imgs;
     var index=parseInt(Math.random()*imgs.length);

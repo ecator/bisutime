@@ -1,15 +1,20 @@
-<view class="header">{{header}}</view>
-<view class="container">
-	<view class="content">
-	<text class="display">{{content}}</text>
-	</view>
-	<view class="gallery">
-	<image class="photo" src="{{image.src}}" mode="aspectFill" bindtap="changeImg"></image>
-	<text class="photographer">photo by {{image.photographer}}</text>
-	</view>
+<view class="header">
+	<text class="notification">{{notification.header}}</text>
 </view>
+<scroll-view class="container" scroll-y="true">
+	<view class="content">
+		<text class="display">{{content}}</text>
+	</view>
+	<view wx:if="{{image}}" class="gallery">
+		<image class="photo" src="{{image.src}}" mode="aspectFill" bindtap="changeImg"></image>
+		<text class="photographer">photo by {{image.photographer}}</text>
+	</view>
+</scroll-view>
 <view class="lang">
 	<block wx:key="index" wx:for="{{btns}}">
 		<button bindtap="changeLang" id="{{item.id}}" type="{{item.type}}" size="mini" plain="true" >{{item.name}}</button>
 	</block>
+</view>
+<view class="footer">
+	<text class="notification">{{notification.footer}}</text>
 </view>
