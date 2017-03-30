@@ -154,15 +154,14 @@ function getDisplay(){
     var dayIndex=bisutime.getDay()-1;
     var time=bisutime.getTime();
     var weekth=bisutime.getWeekth();
+    var before=parseInt(time);
+    var next=parseInt(time)+1;
     if(lan=='en'){
         //英语序数需要特殊处理
-        time=ordinal[time-1];
-        weekth=ordinal[weekth-1];
         var before=ordinal[parseInt(time)-1];
         var next=ordinal[parseInt(time)];
-    }else{
-        var before=parseInt(time);
-        var next=parseInt(time)+1;
+        time=ordinal[time-1];
+        weekth=ordinal[weekth-1];
     }
     var next_time=formatHM(bisutime.getNext());
     //构建tokens
@@ -200,7 +199,7 @@ function getDisplay(){
     }else if (bisutime.getTime()>0 && bisutime.getTime()<=12 && parseInt(bisutime.getTime())==bisutime.getTime()) {
         //上课中
         res.push(parseFormat({flag:"lesson",tokens}));
-        return res;
+        return res.join("\n");
     }else if(bisutime.getTime()>12){
         //放学
         res.push(parseFormat({flag:"evening",tokens}));
