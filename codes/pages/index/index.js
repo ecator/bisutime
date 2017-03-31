@@ -243,7 +243,7 @@ function getDisplay(){
             //星期六
             res.push(parseFormat({flag:"saturday",tokens}));
         }
-        return res,join("\n");
+        return res.join("\n");
     }
     if (bisutime.getTime()<=0) {
         //还未上课
