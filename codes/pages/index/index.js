@@ -1,10 +1,20 @@
 var app=getApp();
 var BISUTIME=require("../../lib/bisutime");
+var getCurrentPage=require("../../lib/getcurrentpage");
 //声明全局bisutime对象
 var bisutime={};
-// console.log(bisutime.getWeekth(),bisutime.getTime());
 //全局语言索引，默认中文展示
 var langIndex=wx.getStorageSync('langIndex')?wx.getStorageSync('langIndex'):0;
+//全局图片索引
+var imgIndex=0;
+//全局图片数组
+var imgs=[
+    {
+        src:"../../img/loading.gif",
+        origin:app.data.server+"logo/loading.gif",
+        type:"loading"
+    }
+];
 //全局语言属性数组
 var langs=[
     {
@@ -19,7 +29,7 @@ var langs=[
         type:"default",
         name:"English",
         title:"BISU TIME",
-        loading:"loading"
+        loading:"wait wait wait"
     },
     {
         id:"jp",
@@ -36,19 +46,22 @@ var langs=[
         loading:"погрузки"
     }
 ];
-//加载提示
-wx.showLoading({
-    title:langs[langIndex].loading,
-    mask:true
-});
 //远程配置
 var config={};
+//全局触摸点堆栈，用于记录滑动信息
+var touchStack=[];
 //注册页面
 Page({
     data:{
-        btns:{}
+        btns:[],
+        image:imgs[0]
     },
     onLoad:function(){
+        //加载提示
+        wx.showLoading({
+            title:langs[langIndex].loading,
+            mask:true
+        });
         //绑定setData
         var setData=this.setData.bind(this);
         //获取配置
@@ -59,6 +72,13 @@ Page({
             //设置公告
             setData({
                 notification:config.notification
+            });
+            //重新构造全局imgs对象{src:xx,origin:xx,photographer:xx,type:photo/loading}
+            imgs=config.imgs.map(function(item){
+                item.origin=item.src;
+                item.type="loading";
+                item.src="../../img/loading.gif";
+                return item;
             });
             //声明起始日期
             var start=new Date;
@@ -106,16 +126,48 @@ Page({
     },
     //随机切换图片
     changeImg:function(){
-        this.setData({
-            image:getImg()
-        });
+        transitImg(getImg());
+    },
+    //滑动图片更换图片
+    slideImg:function(e){
+        // console.log(e);
+        switch(e.type){
+            case "touchmove":
+                touchStack.push(e.changedTouches[0]);
+                break;
+            case "touchend":
+                //通过判断最后两个点的x坐标来确定左右滑动操作
+                if(touchStack.length>1){
+                    if(touchStack[touchStack.length-1].clientX-touchStack[touchStack.length-2].clientX>0){
+                        //从左往右滑动
+                        // console.log("从左往右滑动");
+                        imgIndex-=1;
+                        if(imgIndex<0){
+                            imgIndex=imgs.length-1;
+                        }
+                        //顺时针过渡图片
+                        transitImg(getImg(imgIndex),true);
+                    }else{
+                        //从右往左滑动
+                        // console.log("从右往左滑动");
+                        imgIndex+=1;
+                        if(imgIndex>=imgs.length){
+                            imgIndex=0;
+                        }
+                        //逆时针过渡动画
+                        transitImg(getImg(imgIndex));
+                    }
+                }
+                //清空触摸堆栈
+                touchStack.splice(0,touchStack.length);
+                break;
+        }
     }
 });
 
-//根据当前语言索引，设置对应语言type为primary,并刷新试图
+//根据当前语言索引，设置对应语言type为primary,并刷新视图
 function refreshUI(){
-    var currentPages=getCurrentPages();
-    var currentPage=currentPages[currentPages.length-1];
+    var currentPage=getCurrentPage();
     for(var i=0;i<langs.length;i++ ){
         if(i==langIndex){
             langs[i].type="primary";
@@ -129,8 +181,9 @@ function refreshUI(){
     currentPage.setData({
         btns:langs,
         content:getDisplay(),
-        image:getImg()
     });
+    //过度刷新图片
+    transitImg(getImg());
     //刷新导航条标题
     wx.setNavigationBarTitle({
         title:langs[langIndex].title
@@ -227,11 +280,41 @@ function getDisplay(){
     return 'hello bisutime';
 }
 
-//从全局config对象中随机返回一个图片对象，{src:xx,photographer:xx}
-function getImg(){
-    var imgs=config.imgs;
-    var index=parseInt(Math.random()*imgs.length);
-    return imgs[index];
+/*从全局config对象中随机返回一个图片对象
+*{src:xx,origin:xx,photographer:xx,type:photo/loading}
+*如果自定了specify参数则返回指定索引的图片对象，并设置全局索引
+*/
+function getImg(specify){
+    //防止和上一张图片重复
+    var tmpIndex=0;
+    do{
+        tmpIndex=parseInt(Math.random()*imgs.length);
+    }while(imgs.length>0 && imgIndex==tmpIndex);
+    imgIndex=typeof(specify)!="undefined"?specify:tmpIndex;
+    if(imgs[imgIndex].type=='loading'){
+        //还未获取远程图片，需要获取
+        var index=imgIndex;
+        wx.downloadFile({
+            url:imgs[index].origin,
+            success:function(res){
+                imgs[index].src=res.tempFilePath;
+                imgs[index].type="photo";
+                if (index==imgIndex) {
+                    /*如果正在显示当前图片则更新视图
+                    **等待2秒过渡
+                    */
+                    setTimeout(function(){
+                        var currentPage=getCurrentPage();
+                        currentPage.setData({
+                        image:imgs[index]
+                    });
+                    },2000);
+                }
+                // console.log("成功下载图片：",imgs[index]);
+            }
+        });
+    }
+    return imgs[imgIndex];
 }
 //更具语言格式化时间 xx小时xx分钟 或者 xx分钟，需要提供一个HM{hours:xx,mins:xx}对象
 function formatHM(hm){
@@ -316,4 +399,24 @@ function parseFormat(data){
         //不需要处理token
         return config.format[flag][lan];
     }
+}
+
+//过度显示图片,则随机过渡一张图片，需要传入一个img对象
+function transitImg(img,reverse){
+    var currentpage=getCurrentPage();
+    var animation=wx.createAnimation({
+            duration:1000
+        });
+    var deg=reverse?90:-90;
+    animation.rotateY(deg).opacity(0).step()
+        currentpage.setData({
+            galleryAnima:animation.export()
+        });
+    setTimeout(function(){
+        animation.rotateY(0).opacity(1).step()
+        currentpage.setData({
+            image:img,
+            galleryAnima:animation.export()
+        });
+    },1000);
 }

@@ -5,9 +5,9 @@
 	<view class="content">
 		<text class="display">{{content}}</text>
 	</view>
-	<view wx:if="{{image}}" class="gallery">
-		<image class="photo" src="{{image.src}}" mode="aspectFill" bindtap="changeImg"></image>
-		<text class="photographer">photo by {{image.photographer}}</text>
+	<view animation="{{galleryAnima}}" wx:if="{{image}}" class="gallery">
+		<image class="{{image.type}}" src="{{image.src}}" mode="aspectFit" bindtouchmove="slideImg" bindtouchend="slideImg" bindtap="changeImg"></image>
+		<text class="photographer" wx:if="{{image.type == 'photo' && image.photographer}}">photo by {{image.photographer}}</text>
 	</view>
 </scroll-view>
 <view class="lang">
