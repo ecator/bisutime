@@ -1,0 +1,67 @@
+.container{
+	width: 700rpx;
+	margin: 10rpx auto;
+}
+.calendar{
+	width: 100%;
+}
+.calendar-title{
+	font-weight: bold;
+	text-align: center;
+}
+.calendar-row{
+	display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	justify-content: center;
+}
+.calendar-th{
+	font-weight: bold;
+}
+.calendar-td{
+	font-weight: normal;
+}
+.calendar-th,.calendar-td{
+	padding: 15rpx 15rpx;
+	width: 14%;
+	height: 14%;
+	text-align: center;
+	font-size: 30rpx;
+}
+.holiday,.study,.test{
+	position: relative;
+}
+.holiday{
+	color: #00F5FF;
+}
+.study{
+	color: #EE0000;
+}
+.test{
+	color:#CD00CD;
+}
+.small{
+	padding: 18rpx;
+	font-size: 22rpx
+}
+.holiday:after{
+	content: "假";
+	font-size: 18rpx;
+	display: block;
+	position: absolute;
+	top:0;
+}
+.study:after{
+	content: "学";
+	font-size: 18rpx;
+	display: block;
+	position: absolute;
+	top: 0;
+}
+.test:after{
+	content: "试";
+	font-size: 18rpx;
+	display: block;
+	position: absolute;
+	top: 0;
+}

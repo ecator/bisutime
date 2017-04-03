@@ -1,0 +1,32 @@
+.list{
+	width: 700rpx;
+	margin:50rpx auto;
+}
+.list-item{
+	display: flex;
+	width: 85%;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	text-align: center;
+	margin:5rpx auto;
+	/*border: 1px red solid;*/
+}
+.list-title{
+	width: 40%;
+	text-align: left;
+}
+.list-body{
+	display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	width: 60%;
+	text-align: left;
+	/*border: 1px blue solid;*/
+}
+.list-body-item{
+	width: 30%;
+}
+.now{
+	font-weight: bold;
+	color:#CD3333;
+}

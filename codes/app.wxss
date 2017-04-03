@@ -1,0 +1,5 @@
+.header{
+	font-size: 40rpx;
+	text-align: center;
+	font-weight: bold;
+}

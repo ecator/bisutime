@@ -50,3 +50,35 @@
 ## imgs：图片映射数组
 - src：图片绝对地址
 - photographer：作者
+
+# calendar.json
+校历配置文件，具体字段解释如下：
+
+## start
+校历开始月，为一个事件对象
+
+## end
+校历结束月，为一个时间对象
+
+## title
+校历显示标题
+
+## holidays
+假期数组：
+- start：开始时间对象
+- end：结束时间对象
+
+## studies
+调休数组：
+- start：开始时间对象
+- end：结束时间对象
+
+## tests
+考试数组：
+- start：开始时间对象
+- end：结束时间对象
+
+## smalls
+采用文字描述的小日期方格数组（一般为节日）：
+- date：对应日期
+- title：替换显示的标题文字

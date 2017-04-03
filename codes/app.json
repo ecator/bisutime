@@ -1,6 +1,8 @@
 {
     "pages": [
-      "pages/index/index"
+      "pages/index/index",
+      "pages/schedule/schedule",
+      "pages/calendar/calendar"
     ],
     "window": {
       "navigationBarBackgroundColor": "#ffffff",
@@ -8,6 +10,30 @@
       "backgroundColor": "#eeeeee",
       "backgroundTextStyle": "light",
       "enablePullDownRefresh": false
+    },
+    "tabBar":{
+      "list":[
+        {
+          "text":"实时",
+          "pagePath":"pages/index/index",
+          "iconPath":"img/index.png",
+          "selectedIconPath":"img/index.png"
+        },
+        {
+          "text":"时刻表",
+          "pagePath":"pages/schedule/schedule",
+          "iconPath":"img/schedule.png",
+          "selectedIconPath":"img/schedule.png"
+        },
+        {
+          "text":"校历",
+          "pagePath":"pages/calendar/calendar",
+          "iconPath":"img/calendar.png",
+          "selectedIconPath":"img/calendar.png"
+        }
+      ],
+      "borderStyle":"white",
+      "selectedColor":"#00EE00"
     },
     "debug":false
 }

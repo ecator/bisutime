@@ -1,8 +1,9 @@
 var app=getApp();
 var BISUTIME=require("../../lib/bisutime");
-var getCurrentPage=require("../../lib/getcurrentpage");
 //声明全局bisutime对象
 var bisutime={};
+//声明全局本页面对象
+var currentpage={};
 //全局语言索引，默认中文展示
 var langIndex=wx.getStorageSync('langIndex')?wx.getStorageSync('langIndex'):0;
 //全局图片索引
@@ -57,6 +58,8 @@ Page({
         image:imgs[0]
     },
     onLoad:function(){
+        //暴露出本页面对象
+        currentpage=this;
         //加载提示
         wx.showLoading({
             title:langs[langIndex].loading,
@@ -97,7 +100,7 @@ Page({
                 setData({
                     content:getDisplay()
                 });
-            },1000);
+            },30000);
             //关闭加载框
             wx.hideLoading();
         });
@@ -167,10 +170,17 @@ Page({
 
 //根据当前语言索引，设置对应语言type为primary,并刷新视图
 function refreshUI(){
-    var currentPage=getCurrentPage();
+    var transition=false;
     for(var i=0;i<langs.length;i++ ){
         if(i==langIndex){
-            langs[i].type="primary";
+            if(langs[i].type=="primary"){
+                //语言没有改变
+                transition=false;
+            }else{
+                //语言改变了
+                langs[i].type="primary";
+                transition=true;
+            }
         }else{
             langs[i].type="default";
         }
@@ -178,10 +188,30 @@ function refreshUI(){
     //保存语言索引到缓存
     wx.setStorageSync('langIndex', langIndex);
     //刷新界面语言
-    currentPage.setData({
-        btns:langs,
-        content:getDisplay(),
-    });
+    if(transition){
+        //过渡方式刷新，因为语言改变
+        var animation=wx.createAnimation({
+            duration:1000
+        });
+        animation.opacity(0).step();
+        currentpage.setData({
+            btns:langs,
+            contentAnima:animation.export()
+        });
+        setTimeout(function(){
+            animation.opacity(1).step();
+            currentpage.setData({
+                content:getDisplay(),
+                contentAnima:animation.export()
+            });
+        },1000);
+    }else{
+        //语言没有改变，不过渡
+        currentpage.setData({
+            btns:langs,
+            content:getDisplay(),
+        });
+    }
     //过度刷新图片
     transitImg(getImg());
     //刷新导航条标题
@@ -297,18 +327,35 @@ function getImg(specify){
         wx.downloadFile({
             url:imgs[index].origin,
             success:function(res){
-                imgs[index].src=res.tempFilePath;
-                imgs[index].type="photo";
                 if (index==imgIndex) {
                     /*如果正在显示当前图片则更新视图
                     **等待2秒过渡
                     */
                     setTimeout(function(){
-                        var currentPage=getCurrentPage();
-                        currentPage.setData({
-                        image:imgs[index]
-                    });
+                        //2秒后更新imgs数组，因为返回的数组是引用传递，防止被提前更改，破坏动画
+                        imgs[index].src=res.tempFilePath;
+                        imgs[index].type="photo";
+                        //检测这两秒钟用户是否切换了图片
+                        if(index==imgIndex){
+                            var animation=wx.createAnimation({
+                                duration:500
+                            });
+                            animation.opacity(0).step();
+                            currentpage.setData({
+                                galleryAnima:animation.export()
+                            });
+                            setTimeout(function(){
+                                animation.opacity(1).step();
+                                currentpage.setData({
+                                    image:imgs[index],
+                                    galleryAnima:animation.export()
+                                });
+                            },500);
+                        }
                     },2000);
+                }else{
+                    imgs[index].src=res.tempFilePath;
+                    imgs[index].type="photo";
                 }
                 // console.log("成功下载图片：",imgs[index]);
             }
@@ -403,7 +450,6 @@ function parseFormat(data){
 
 //过度显示图片,则随机过渡一张图片，需要传入一个img对象
 function transitImg(img,reverse){
-    var currentpage=getCurrentPage();
     var animation=wx.createAnimation({
             duration:1000
         });

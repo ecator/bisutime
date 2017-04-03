@@ -1,0 +1,14 @@
+<view class="header">{{header}}</view>
+<view class="list">
+	<block wx:for="{{list}}" wx:key="index">
+		<view class="list-item {{item.type}}">
+			<view class="list-title">{{item.title}}</view>
+			<view class="list-body">
+				<view class="list-body-item">{{item.body.start}}</view>
+				<view class="list-body-item">──</view>
+				<view class="list-body-item">{{item.body.end}}</view>
+			</view>
+		</view>
+	</block>
+</view>
+<view class="footer">{{footer}}</view>

@@ -1,0 +1,31 @@
+<view class="header">{{header}}</view>
+<view class="container">
+	<block wx:for="{{calendars}}" wx:key="calendarIndex" wx:for-item="calendar">
+		<view class="calendar">
+			<view class="calendar-title">{{calendar.title}}</view>
+			<view class="calendar-body">
+				<view class="calendar-row">
+					<view class="calendar-th">周一</view>
+					<view class="calendar-th">周二</view>
+					<view class="calendar-th">周三</view>
+					<view class="calendar-th">周四</view>
+					<view class="calendar-th">周五</view>
+					<view class="calendar-th">周六</view>
+					<view class="calendar-th">周日</view>
+				</view>
+				<block wx:for="{{calendar.rows}}" wx:key="rowIndex" wx:for-item="row">
+					<view class="calendar-row">
+						<view class="calendar-td {{row.mon.type}}">{{row.mon.body}}</view>
+						<view class="calendar-td {{row.tue.type}}">{{row.tue.body}}</view>
+						<view class="calendar-td {{row.wed.type}}">{{row.wed.body}}</view>
+						<view class="calendar-td {{row.thu.type}}">{{row.thu.body}}</view>
+						<view class="calendar-td {{row.fri.type}}">{{row.fri.body}}</view>
+						<view class="calendar-td {{row.sat.type}}">{{row.sat.body}}</view>
+						<view class="calendar-td {{row.sun.type}}">{{row.sun.body}}</view>
+					</view>
+				</block>
+			</view>
+		</view>
+	</block>
+</view>
+<view class="footer">{{footer}}</view>
