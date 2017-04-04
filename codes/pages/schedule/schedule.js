@@ -111,7 +111,12 @@ for(var i = 0;i<list.length;i++){
 Page({
 	data:{
 		list:list,
-		header:"二外时刻表"
+		header:""
+	},
+	onShow:function(){
+		wx.setNavigationBarTitle({
+			title:"二外时刻表"
+		});
 	},
 	onShareAppMessage:function(){
 		return {
