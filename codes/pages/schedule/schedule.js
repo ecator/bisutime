@@ -2,6 +2,7 @@ var BISUTIME=require("../../lib/bisutime");
 //不需要获取第几周，所以开始时间无所谓
 var bisutime=new BISUTIME(new Date);
 var app=getApp();
+var currentpage={};
 var list=[
 	{
 		type:"",
@@ -100,23 +101,17 @@ var list=[
 		}
 	}
 ];
-//找出现在正在上那一节课
-var now=bisutime.getTime();
-for(var i = 0;i<list.length;i++){
-	if(i==now-1){
-		list[i].type="now";
-		break;
-	}
-}
+
 Page({
 	data:{
-		list:list,
+		list:[],
 		header:""
 	},
 	onShow:function(){
 		wx.setNavigationBarTitle({
 			title:"二外时刻表"
 		});
+		refreshSchedule();
 	},
 	onShareAppMessage:function(){
 		return {
@@ -125,20 +120,26 @@ Page({
 		};
 	},
 	onLoad:function(){
-		var setData=this.setData.bind(this);
-		//试试更新当前是第几节课
-		setTimeout(function(){
-			var now=bisutime.getTime();
-			for(var i = 0;i<list.length;i++){
-				if(i==now-1){
-					list[i].type="now";
-				}else{
-					list[i].type=""
-				}
-			}
-			setData({
-				list:list
-			});
-		},60000);
+		//导出当前页面对象
+		currentpage=this;
+		//定时刷新时刻表
+		setTimeout(refreshSchedule,1000);
 	}
 });
+
+//刷新时刻表
+function refreshSchedule(){
+	//找出现在正在上那一节课
+	var now=bisutime.getTime();
+	for(var i = 0;i<list.length;i++){
+		if(i==now-1){
+			list[i].type="now";
+		}
+		if (i<now-1) {
+			list[i].type="done";
+		}
+	}
+	currentpage.setData({
+		list:list
+	});
+}

@@ -9,6 +9,7 @@
 	flex-wrap: nowrap;
 	text-align: center;
 	margin:5rpx auto;
+	margin-top: 35rpx;
 	/*border: 1px red solid;*/
 }
 .list-title{
@@ -29,4 +30,9 @@
 .now{
 	font-weight: bold;
 	color:#CD3333;
+	text-shadow: 5rpx 5rpx 5rpx gray;
+}
+.done{
+	text-decoration: line-through;
+	color: gray;
 }

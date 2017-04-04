@@ -1,5 +1,6 @@
 var app=getApp();
 var BISUTIME=require("../../lib/bisutime");
+var makeDate=require("../../lib/makedate");
 //声明全局bisutime对象
 var bisutime={};
 //声明全局本页面对象
@@ -57,6 +58,11 @@ Page({
         btns:[],
         image:imgs[0]
     },
+    onShow:function(){
+        wx.setNavigationBarTitle({
+            title:langs[langIndex].title
+        });
+    },
     onLoad:function(){
         //暴露出本页面对象
         currentpage=this;
@@ -84,13 +90,7 @@ Page({
                 return item;
             });
             //声明起始日期
-            var start=new Date;
-            start.setHours(0);
-            start.setMinutes(0);
-            start.setSeconds(0);
-            start.setFullYear(config.start.year);
-            start.setDate(config.start.date);
-            start.setMonth(config.start.month);
+            var start=makeDate(config.start.year,config.start.month,config.start.date);
             console.log("本学期开始时间：%s",start);
             bisutime=new BISUTIME(start);
             //根据当前语言索引刷新界面
