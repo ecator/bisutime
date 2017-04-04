@@ -23,7 +23,9 @@ Page({
 			var calendars=[];
 			var start=new Date;
 			var end=new Date;
+			var index=new Date;
 			var today=new Date;
+			var firstDay=new Date;
 			start.setFullYear(res.start.year);
 			start.setDate(1);
 			start.setMonth(res.start.month);
@@ -39,7 +41,14 @@ Page({
 			end.setMinutes(0);
 			end.setSeconds(0);
 			end.setMilliseconds(0);
-			var index=new Date;
+			firstDay.setFullYear(res.start.year);
+			firstDay.setDate(1);
+			firstDay.setMonth(res.start.month);
+			firstDay.setDate(res.start.date);
+			firstDay.setHours(0);
+			firstDay.setMinutes(0);
+			firstDay.setSeconds(0);
+			firstDay.setMilliseconds(0);
 			index.setFullYear(start.getFullYear());
 			index.setDate(start.getDate());
 			index.setMonth(start.getMonth());
@@ -170,10 +179,15 @@ Page({
 				if((count+1)%7==0 || lastMonth!=index.getMonth()){
 					//新增加一行
 					// console.log(daysMap);
-					calendars[calendars.length-1].addRow(weekth[weekIndex],daysMap);
-					if(lastMonth==index.getMonth()){
-						//同一个月周数增加一
-						weekIndex++;
+					//是否已经是开学第一周
+					if(firstDay.getTime()<index.getTime()){
+						calendars[calendars.length-1].addRow(weekth[weekIndex],daysMap);
+						if((count+1)%7==0){
+							//循环一周增加一
+							weekIndex++;
+						}	
+					}else{
+						calendars[calendars.length-1].addRow("未开学",daysMap);
 					}
 					daysMap=[
 						{type:"",body:""},

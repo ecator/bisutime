@@ -16,7 +16,7 @@
 				</view>
 				<block wx:for="{{calendar.rows}}" wx:key="rowKey" wx:for-item="row">
 					<view class="calendar-row">
-						<view class="calendar-td">{{row.weekth}}</view>
+						<view class="calendar-td weekth">{{row.weekth}}</view>
 						<view class="calendar-td {{row.mon.type}}">{{row.mon.body}}</view>
 						<view class="calendar-td {{row.tue.type}}">{{row.tue.body}}</view>
 						<view class="calendar-td {{row.wed.type}}">{{row.wed.body}}</view>
