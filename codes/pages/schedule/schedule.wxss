@@ -1,6 +1,8 @@
 .list{
 	width: 700rpx;
 	margin:50rpx auto;
+	box-shadow: 0rpx 5rpx 5rpx #8B8B83;
+	padding-bottom: 80rpx;
 }
 .list-item{
 	display: flex;
@@ -35,4 +37,13 @@
 .done{
 	text-decoration: line-through;
 	color: gray;
+}
+.pushpin{
+	display: block;
+	margin:0 auto;
+	margin-top: -50rpx;
+	margin-bottom: -60rpx;
+	width: 100rpx;
+	height: 100rpx;
+	/*border: 1px blue solid;*/
 }

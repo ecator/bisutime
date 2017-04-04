@@ -5,10 +5,15 @@
 .calendar{
 	width: 704rpx;
 	margin:5rpx auto;
+	box-shadow: 5rpx 5rpx 5rpx #8B8B83;
+	margin-bottom: 10rpx;
 }
 .calendar-title{
-	font-weight: bold;
+	font-weight: bolder;
 	text-align: center;
+	font-size: 40rpx;
+	/*text-shadow: 5rpx 5rpx 5rpx #8B8B83;*/
+	color: #CD2626;
 }
 .calendar-row{
 	display: flex;
@@ -18,6 +23,8 @@
 }
 .calendar-th{
 	font-weight: bold;
+	background-color: #8EE5EE;
+	border-radius: 50% 50%;
 }
 .calendar-td{
 	font-weight: normal;
@@ -75,6 +82,5 @@
 }
 .weekth{
 	padding-top: 20rpx;
-	font-weight: bold;
 	font-size: 13rpx;
 }

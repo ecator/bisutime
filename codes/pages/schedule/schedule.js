@@ -123,7 +123,7 @@ Page({
 		//导出当前页面对象
 		currentpage=this;
 		//定时刷新时刻表
-		setTimeout(refreshSchedule,1000);
+		setInterval(refreshSchedule,1000);
 	}
 });
 

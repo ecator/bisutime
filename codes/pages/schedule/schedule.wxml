@@ -1,5 +1,6 @@
 <view class="header">{{header}}</view>
 <view class="list">
+	<image class="pushpin" mode="aspectFit" src="../../img/pushpin.jpg"></image>
 	<block wx:for="{{list}}" wx:key="index">
 		<view class="list-item {{item.type}}">
 			<view class="list-title">{{item.title}}</view>

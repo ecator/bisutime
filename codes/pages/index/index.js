@@ -100,7 +100,7 @@ Page({
                 setData({
                     content:getDisplay()
                 });
-            },30000);
+            },5000);
             //关闭加载框
             wx.hideLoading();
         });
