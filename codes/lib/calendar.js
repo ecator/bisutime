@@ -5,6 +5,7 @@ class Calendar{
 	constructor(title){
 		this.title=title;
 		this.rows=[];
+		this.currentMonth=false;
 	}
 	//增加一行数据，开学第几周和一个含有七个{type:'',body:''}成员的数组，依次是周一到周日
 	addRow(weekth,daysMap){

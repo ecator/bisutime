@@ -162,7 +162,7 @@ class BISUTIME{
                 return this.makeHM(18 * 60 + 30 - totalTime);
                 break;
             case 11:
-                return this,makeHM(19 * 60 + 15 - totalTime);
+                return this.makeHM(19 * 60 + 15 - totalTime);
                 break;
             case 11.5:
                 return this.makeHM(19 * 60 + 20 - totalTime);

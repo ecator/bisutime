@@ -10,6 +10,11 @@ Page({
 		header:"",
 		calendars:[]
 	},
+	taptest:function(){
+		this.setData({
+			targetMonth:"current_month"
+		});
+	},
 	onShow:function(){
 		wx.setNavigationBarTitle({
 			title:naviTitle
@@ -24,9 +29,6 @@ Page({
 		getCalendar(function(res){
 			console.log("当前校历：",res);
 			naviTitle=res.title;
-			wx.setNavigationBarTitle({
-				title:naviTitle
-			});
 			var calendars=[];
 			var start=makeDate(res.start.year,res.start.month,1);
 			var end=makeDate(res.end.year,res.end.month+1,0);
@@ -39,15 +41,11 @@ Page({
 			var lastMonth=index.getMonth();
 			//初始化第一个日历
 			calendars.push(new Calendar(index.getFullYear()+"年"+String(index.getMonth()+1)+"月"));
-			var daysMap=[
-					{type:"",body:""},
-					{type:"",body:""},
-					{type:"",body:""},
-					{type:"",body:""},
-					{type:"",body:""},
-					{type:"",body:""},
-					{type:"",body:""}
-			];
+			//判断是否是本月，可在初始化时滚动这个月到可视区域
+			if(today.getFullYear()==index.getFullYear() && today.getMonth()==index.getMonth()){
+				calendars[calendars.length-1].currentMonth=true;
+			}
+			var daysMap=getDaysMap();
 			//生成校历
 			var holidayStart={};
 			var holidayEnd={};
@@ -62,6 +60,10 @@ Page({
 					//新增一个日历
 					calendars.push(new Calendar(index.getFullYear()+"年"+String(index.getMonth()+1)+"月"));
 					count=(index.getDay()==0?7:index.getDay())-1;
+					//判断是否是本月，可在初始化时滚动这个月到可视区域
+					if(today.getFullYear()==index.getFullYear() && today.getMonth()==index.getMonth()){
+						calendars[calendars.length-1].currentMonth=true;
+					}
 				}
 				daysMap[count%7].body=index.getDate();
 				//遍历holidays
@@ -122,21 +124,23 @@ Page({
 						calendars[calendars.length-1].addRow("未开学",daysMap);
 					}
 					//重新定义row数组
-					daysMap=[
-						{type:"",body:""},
-						{type:"",body:""},
-						{type:"",body:""},
-						{type:"",body:""},
-						{type:"",body:""},
-						{type:"",body:""},
-						{type:"",body:""}
-					];
+					daysMap=getDaysMap();
 				}
 			}
+			//渲染校历
 			setData({
 				calendars:calendars
 			});
 			wx.hideLoading();
+			//延迟执行跳转到当前月份和设置导航条标题行为
+			setTimeout(function(){
+				setData({
+					targetMonth:"current_month"
+				});
+				wx.setNavigationBarTitle({
+					title:naviTitle
+				});
+			},10);
 		});
 	},
 	onShareAppMessage:function(){
@@ -172,4 +176,17 @@ function getCalendar(callback){
             callback(calendar);
         }
 	});
+}
+
+//返回一个daysMap初始化数组
+function getDaysMap(){
+	return [
+		{type:"",body:""},
+		{type:"",body:""},
+		{type:"",body:""},
+		{type:"",body:""},
+		{type:"",body:""},
+		{type:"",body:""},
+		{type:"",body:""}
+	];
 }

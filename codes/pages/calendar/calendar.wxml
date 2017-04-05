@@ -1,8 +1,10 @@
 <view class="header">{{header}}</view>
-<view class="container">
+<scroll-view class="container" scroll-y="{{true}}" enable-back-to-top="{{true}}" scroll-with-animation="{{true}}" scroll-into-view="{{targetMonth}}">
 	<block wx:for="{{calendars}}" wx:key="calendarKey" wx:for-item="calendar">
 		<view class="calendar">
-			<view class="calendar-title">{{calendar.title}}</view>
+			<!-- 判断是否是当前月，滚动条在初始状态下可跳转至当前月 -->
+			<view wx:if="{{calendar.currentMonth}}" id="current_month" class="calendar-title">{{calendar.title}}</view>
+			<view wx:else class="calendar-title">{{calendar.title}}</view>
 			<view class="calendar-body">
 				<view class="calendar-row">
 					<view class="calendar-th">周次</view>
@@ -29,5 +31,7 @@
 			</view>
 		</view>
 	</block>
-</view>
+</scroll-view>
+<!-- 这是一个测试按钮 -->
+<button hidden="{{true}}" bindtap="taptest" type="warn">测试</button>
 <view class="footer">{{footer}}</view>

@@ -1,5 +1,6 @@
 .container{
 	width: 720rpx;
+	height: 1100rpx;
 	margin: 10rpx auto;
 	padding-bottom: 5rpx;
 }
@@ -55,21 +56,21 @@
 	padding: 18rpx;
 	font-size: 18rpx
 }
-.holiday:after{
+.holiday::after{
 	content: "假";
 	font-size: 15rpx;
 	display: block;
 	position: absolute;
 	top:0;
 }
-.study:after{
+.study::after{
 	content: "学";
 	font-size: 15rpx;
 	display: block;
 	position: absolute;
 	top: 0;
 }
-.test:after{
+.test::after{
 	content: "试";
 	font-size: 15rpx;
 	display: block;

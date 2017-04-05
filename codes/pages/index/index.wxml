@@ -1,7 +1,7 @@
 <view class="header">
 	<text class="notification">{{notification.header}}</text>
 </view>
-<scroll-view class="container" scroll-y="true">
+<scroll-view class="container" scroll-y="{{true}}">
 	<view animation="{{contentAnima}}" class="content">
 		<text class="display">{{content}}</text>
 	</view>

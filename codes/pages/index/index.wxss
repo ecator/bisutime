@@ -2,7 +2,7 @@
 .notification{
 	display: block;
 	width: 700rpx;
-	margin: 1rpx auto;
+	margin: rpx auto;
 	text-align: center;
 	font-weight: normal;
 }
@@ -30,8 +30,9 @@
 	display: flex;
 	justify-content: space-between;
 	flex-direction: column;
-	width: 750rpx;
-	height: 900rpx;
+	width: 740rpx;
+	height: 950rpx;
+	margin: 10rpx auto;
 	/*border: 1px red solid;*/
 }
 .content{
@@ -63,8 +64,8 @@
 .photographer{
 	display: block;
 	margin-top: 0rpx;
-	width: 700rpx
-	font-size: 10rpx;
+	width: 700rpx;
+	font-size: 20rpx;
 	color: orange;
 	font-style: italic;
 	text-align: right;
