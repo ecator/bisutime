@@ -83,7 +83,7 @@
 			"ru":"У нас ужин сейчас\nДо вечерних занятий осталось {{next_time}}\nПойди поужинать!"
 		},
 		"break":{
-			"zh":"现在是第{{before}}小节和第{{next}}小节课间休息时间\n离下节课还有{{next_time}}\n稍微休息一下吧",
+			"zh":"现在是第{{before}}小节和第{{next}}小节课间休息时间\n离上课还有{{next_time}}\n稍微休息一下吧",
 			"en":"It's the break time between the {{before}} lesson and the {{next}} lesson\nThe next lesson will begin after {{next_time}}\nPlease take a break",
 			"jp":"いまは{{before}}限目と{{next}}限目の間の休憩時間\n次の授業はまだ{{next_time}}あるが\n時間が短いから\n勉強しよう",
 			"ru":"Сейчас {{before}} перерыв\nПерерыв остался {{next_time}}\nХоть отдохни!"

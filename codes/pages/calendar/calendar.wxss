@@ -1,6 +1,7 @@
 .container{
 	width: 720rpx;
 	margin: 10rpx auto;
+	padding-bottom: 5rpx;
 }
 .calendar{
 	width: 704rpx;

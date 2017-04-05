@@ -369,32 +369,53 @@ function formatHM(hm){
     var hours={
         "zh":"小时",
         "en":" hours",
-        "jp":"時",
+        "jp":"時間",
         "ru":"ч."
     };
     var mins={
         "zh":"分钟",
-        "en":" mins",
-        "jp":"分間",
+        "en":" minutes",
+        "jp":"分",
         "ru":" мин."
     };
     if(hm.hours){
+        //小时不为零
         if(hm.mins){
-            if(lan=='en' || lan=='ru'){
-                //英语和俄语有空格
+            //小时不为零，分钟不为零
+            if(lan=='en'){
+                //英语单复数
+                if (hm.hours==1) {
+                    hours[lan]=" hour";
+                }
+                if (hm.mins==1) {
+                    mins[lan]=" minute";
+                }
+                //英语需要用and连接
+                return hm.hours+hours[lan]+" and "+hm.mins+mins[lan];
+            }else if (lan=="ru") {
+                //俄语有空格
                 return hm.hours+hours[lan]+" "+hm.mins+mins[lan];
             }else{
                 return hm.hours+hours[lan]+hm.mins+mins[lan];
             }
         }else{
-            if(lan=='jp'){
-                //日语要特殊出里
-                return hm.hours+hours[lan]+"間";
+            // 小时不为零，但是分钟为零
+            if (lan=="en") {
+                //英语单复数
+                if (hm.hours==1) {
+                    hours[lan]=" hour";
+                }
+                return hm.hours+hours[lan];
             }else{
                 return hm.hours+hours[lan];
             }
         }
     }else{
+        //小时为零，分钟不为零
+        if (lan=="en" && hm.mins==1) {
+            //英语单复数
+            mins[lan]=" minute";
+        }
         return hm.mins+mins[lan];
     }
 }
