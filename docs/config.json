@@ -91,55 +91,31 @@
 	},
 	"imgs":[
 		{
-			"src":"https://ecator.github.io/bisutime/img/snow-1.jpg",
+			"src":"https://ecator.github.io/bisutime/img/wuyan-1.jpg",
 			"photographer":"吴岩"
 		},
 		{
-			"src":"https://ecator.github.io/bisutime/img/snow-2.jpg",
+			"src":"https://ecator.github.io/bisutime/img/wuyan-2.jpg",
 			"photographer":"吴岩"
 		},
 		{
-			"src":"https://ecator.github.io/bisutime/img/snow-3.jpg",
+			"src":"https://ecator.github.io/bisutime/img/wuyan-3.jpg",
 			"photographer":"吴岩"
 		},
 		{
-			"src":"https://ecator.github.io/bisutime/img/snow-4.jpg",
+			"src":"https://ecator.github.io/bisutime/img/wuyan-4.jpg",
 			"photographer":"吴岩"
 		},
 		{
-			"src":"https://ecator.github.io/bisutime/img/snow-5.jpg",
+			"src":"https://ecator.github.io/bisutime/img/wuyan-5.jpg",
 			"photographer":"吴岩"
 		},
 		{
-			"src":"https://ecator.github.io/bisutime/img/snow-6.jpg",
+			"src":"https://ecator.github.io/bisutime/img/wuyan-6.jpg",
 			"photographer":"吴岩"
 		},
 		{
-			"src":"https://ecator.github.io/bisutime/img/snow-7.jpg",
-			"photographer":"吴岩"
-		},
-		{
-			"src":"https://ecator.github.io/bisutime/img/snow-8.jpg",
-			"photographer":"吴岩"
-		},
-		{
-			"src":"https://ecator.github.io/bisutime/img/snow-9.jpg",
-			"photographer":"吴岩"
-		},
-		{
-			"src":"https://ecator.github.io/bisutime/img/snow-10.jpg",
-			"photographer":"吴岩"
-		},
-		{
-			"src":"https://ecator.github.io/bisutime/img/snow-11.jpg",
-			"photographer":"吴岩"
-		},
-		{
-			"src":"https://ecator.github.io/bisutime/img/snow-12.jpg",
-			"photographer":"吴岩"
-		},
-		{
-			"src":"https://ecator.github.io/bisutime/img/snow-13.jpg",
+			"src":"https://ecator.github.io/bisutime/img/wuyan-7.jpg",
 			"photographer":"吴岩"
 		},
 		{
@@ -153,6 +129,18 @@
 		{
 			"src":"https://ecator.github.io/bisutime/img/dongdong-2.jpg",
 			"photographer":"Simon Chung"
+		},
+		{
+			"src":"https://ecator.github.io/bisutime/img/dongdong-2.jpg",
+			"photographer":"Simon Chung"
+		},
+		{
+			"src":"https://ecator.github.io/bisutime/img/shunmengwei-1.jpg",
+			"photographer":"孙梦祎"
+		},
+		{
+			"src":"https://ecator.github.io/bisutime/img/shunmengwei-2.jpg",
+			"photographer":"孙梦祎"
 		}
 	]
 }
