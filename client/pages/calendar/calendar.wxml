@@ -1,0 +1,37 @@
+<scroll-view class="container" scroll-y="{{true}}" enable-back-to-top="{{true}}" scroll-with-animation="{{true}}" scroll-into-view="{{targetMonth}}">
+	<view class="header">{{header}}</view>
+	<block wx:for="{{calendars}}" wx:key="calendarKey" wx:for-item="calendar">
+		<view class="calendar">
+			<!-- 判断是否是当前月，滚动条在初始状态下可跳转至当前月 -->
+			<view wx:if="{{calendar.currentMonth}}" id="current_month" class="calendar-title">{{calendar.title}}</view>
+			<view wx:else class="calendar-title">{{calendar.title}}</view>
+			<view class="calendar-body">
+				<view class="calendar-row">
+					<view class="calendar-th">周次</view>
+					<view class="calendar-th">周一</view>
+					<view class="calendar-th">周二</view>
+					<view class="calendar-th">周三</view>
+					<view class="calendar-th">周四</view>
+					<view class="calendar-th">周五</view>
+					<view class="calendar-th">周六</view>
+					<view class="calendar-th">周日</view>
+				</view>
+				<block wx:for="{{calendar.rows}}" wx:key="rowKey" wx:for-item="row">
+					<view class="calendar-row">
+						<view class="calendar-td weekth">{{row.weekth}}</view>
+						<view class="calendar-td {{row.mon.type}}">{{row.mon.body}}</view>
+						<view class="calendar-td {{row.tue.type}}">{{row.tue.body}}</view>
+						<view class="calendar-td {{row.wed.type}}">{{row.wed.body}}</view>
+						<view class="calendar-td {{row.thu.type}}">{{row.thu.body}}</view>
+						<view class="calendar-td {{row.fri.type}}">{{row.fri.body}}</view>
+						<view class="calendar-td {{row.sat.type}}">{{row.sat.body}}</view>
+						<view class="calendar-td {{row.sun.type}}">{{row.sun.body}}</view>
+					</view>
+				</block>
+			</view>
+		</view>
+	</block>
+	<view class="footer">{{footer}}</view>
+</scroll-view>
+<!-- 这是一个测试按钮 -->
+<button hidden="{{true}}" bindtap="taptest" type="warn">测试</button>

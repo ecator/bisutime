@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {include file="../app/admin/view/head.html" title="$title" /}
+    {include file="../app/admin/view/calendar/head.html" /}
+</head>
+<body>
+<div class="container">
+    <table class="table">
+        <tr><th>#</th><th>开始时间</th><th>结束时间</th><th>校历类型</th><th>操作</th></tr>
+        <!--输出已有类型-->
+        {volist name="calendars" id="calendar"}
+        <form action="/admin/calendar/settype" method="post">
+            <input type="hidden" name="id" value="{$calendar.id}">
+            <tr>
+                <td>{$i}</td>
+                <td>
+                    <div class="input-group date">
+                        <input type="text" name="start" class="form-control" value="{$calendar.start}" />
+                        <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+                    </div>
+                </td>
+                <td>
+                    <div class="input-group date">
+                        <input type="text" name="end" class="form-control" value="{$calendar.end}" />
+                        <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+                    </div>
+                </td>
+                <td>
+                    <select name="type" class="form-control">
+                        {volist name="types" id="type"}
+                        {if condition="$type==$calendar.type"}
+                            <option value="{$type}" selected>{$type}</option>
+                        {else/}
+                            <option value="{$type}">{$type}</option>
+                        {/if}
+                        {/volist}
+                    </select>
+                </td>
+                <td>
+                    <input type="submit" class="btn btn-warning" value="修改">
+                    <a class="btn btn-danger" href="/admin/calendar/deltype?id={$calendar.id}">删除</a>
+                </td>
+            </tr>
+
+        </form>
+        {/volist}
+        <!--增加一个类型-->
+        <form action="/admin/calendar/addtype" method="post">
+            <tr>
+                <td><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></td>
+                <td>
+                    <div class="input-group date">
+                        <input type="text" name="start" class="form-control" value="" />
+                        <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+                    </div>
+                </td>
+                <td>
+                    <div class="input-group date">
+                        <input type="text" name="end" class="form-control" value="" />
+                        <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+                    </div>
+                </td>
+                <td>
+                    <select name="type" class="form-control">
+                        {volist name="types" id="type"}
+                        <option value="{$type}">{$type}</option>
+                        {/volist}
+                    </select>
+                </td>
+                <td>
+                    <input type="submit" class="btn btn-info" value="增加">
+                </td>
+            </tr>
+
+        </form>
+    </table>
+</div>
+<script src="/static/js/admin/datetimepicker.js"></script>
+</body>
+</html>

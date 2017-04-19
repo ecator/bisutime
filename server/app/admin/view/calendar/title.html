@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {include file="../app/admin/view/head.html" title="$title" /}
+    {include file="../app/admin/view/calendar/head.html" /}
+</head>
+<body>
+<div class="container">
+    <form action="/admin/calendar/settitle" method="post" class="settitle">
+        <div class="form-group">
+            <input type="hidden" name="id" value="{$calendar.id}"></input>
+            <label>校历标题</label>
+            <input type="text" class="form-control" name="title" value="{$calendar.title}">
+            <label >校历开始时间</label>
+            <div class="input-group date">
+                <input type="text" name="start" class="form-control" value="{$calendar.start}" />
+                <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+            </div>
+            <label >校历结束时间</label>
+            <div class="input-group date">
+                <input type="text" name="end" class="form-control" value="{$calendar.end}" />
+                <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+            </div>
+            <br>
+            <input type="submit" name="submit" value="修改" class="btn btn-warning">
+        </div>
+    </form>
+</div>
+<script src="/static/js/admin/datetimepicker.js"></script>
+</body>
+</html>

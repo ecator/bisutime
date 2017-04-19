@@ -1,0 +1,16 @@
+form{
+    margin-top: 20px;
+    margin-bottom: 30px;
+    border-radius: 20px 20px;
+    box-shadow: 2px 5px 10px gray;
+    padding: 10px 10px;
+}
+.addlocale{
+    border: 2px blue dotted;
+}
+.setlocale{
+    border: 2px orange solid;
+}
+form:hover{
+    background-color: #eeeeee;
+}

@@ -1,0 +1,7 @@
+.container img{
+    width: 150px;
+    cursor: pointer;
+}
+.full-img{
+    width: 100%;
+}

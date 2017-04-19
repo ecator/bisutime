@@ -1,0 +1,19 @@
+#login{
+    width: 50%;
+}
+#login input[type=submit]{
+    display: block;
+    margin: 20px auto;
+}
+.greet{
+    font-size: 25px;
+}
+dl{
+    font-size: 21px;
+}
+dd{
+    margin-top: 10px;
+}
+dt{
+    margin-top: 20px;
+}

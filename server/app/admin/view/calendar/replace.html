@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {include file="../app/admin/view/head.html" title="$title" /}
+    {include file="../app/admin/view/calendar/head.html" /}
+</head>
+<body>
+<div class="container">
+    <table class="table">
+        <tr><th>#</th><th>替换标题</th><th>替换日期</th><th>操作</th></tr>
+        <!--输出已有替换类型-->
+        {volist name="calendars" id="calendar"}
+        <form action="/admin/calendar/setreplace" method="post">
+            <input type="hidden" name="id" value="{$calendar.id}">
+            <tr>
+                <td>{$i}</td>
+                <td>
+                    <input type="text" name="title" class="form-control" value="{$calendar.title}" />
+                </td>
+                <td>
+                    <div class="input-group date">
+                        <input type="text" name="date" class="form-control" value="{$calendar.date}" />
+                        <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+                    </div>
+                </td>
+                <td>
+                    <input type="submit" class="btn btn-warning" value="修改">
+                    <a class="btn btn-danger" href="/admin/calendar/delreplace?id={$calendar.id}">删除</a>
+                </td>
+            </tr>
+        </form>
+        {/volist}
+        <!--增加一个替换类型-->
+        <form action="/admin/calendar/addreplace" method="post">
+            <tr>
+                <td><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></td>
+                <td>
+                    <input type="text" name="title" class="form-control" value="" />
+                </td>
+                <td>
+                    <div class="input-group date">
+                        <input type="text" name="date" class="form-control" value="" />
+                        <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+                    </div>
+                </td>
+                <td>
+                    <input type="submit" name="submit" class="btn btn-info" value="增加">
+                </td>
+            </tr>
+        </form>
+    </table>
+</div>
+<script src="/static/js/admin/datetimepicker.js"></script>
+</body>
+</html>

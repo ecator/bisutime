@@ -1,0 +1,10 @@
+{
+    "name": "ecat/bisutime-server",
+    "description": "bisutime-server",
+    "type": "project",
+    "require": {
+        "topthink/think": "^5.0"
+    },
+    "license": "MIT",
+    "minimum-stability": "stable"
+}

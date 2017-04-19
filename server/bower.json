@@ -1,0 +1,28 @@
+{
+  "name": "bisutime-server",
+  "homepage": "time.bisudata.top",
+  "description": "bisutime-server",
+  "main": "index.php",
+  "keywords": [
+    "bisutime"
+  ],
+  "authors": [
+    "Martin Qu <qule520@126.com>"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "public/bower",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "^3.2.1",
+    "bootstrap": "^3.3.7",
+    "jquery-md5": "*",
+    "eonasdan-bootstrap-datetimepicker": "^4.17.47"
+  }
+}

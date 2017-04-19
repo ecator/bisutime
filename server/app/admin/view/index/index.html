@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {include file="../app/admin/view/head.html" title="$title" /}
+    <link rel="stylesheet" href="/static/css/admin/index.css">
+    <script src="/static/js/admin/index.js"></script>
+</head>
+<body>
+<div class="container">
+    {if condition="$admin == ''"}
+    <!--输出登录界面-->
+    <form action="/admin/index/login" method="post" id="login">
+        <h2>登录</h2>
+        <div class="form-group">
+            <label>用户名</label>
+            <input type="text" class="form-control" name="user">
+            <label>密码</label>
+            <input type="password" class="form-control" name="password">
+            <input type="submit" class="btn btn-default" name="submit" value="登录">
+        </div>
+    </form>
+    {else /}
+    <!--输出控制面板-->
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <div class="row">
+                <div class="col-xs-12 col-sm-6">
+                    <span class="greet">欢迎&nbsp;{$admin}</span>
+                </div>
+                <div class="col-xs-12 col-sm-1 col-sm-offset-5">
+                    <a href="/admin/index/logout" class="btn btn-danger btn-sm">注销</a>
+                </div>
+            </div>
+        </div>
+        <div class="panel-body">
+            <dl>
+                <dt>二外风景图审阅</dt>
+                <dd><a href="/admin/gallery" target="_blank">图片管理</a></dd>
+                <dt>校历</dt>
+                <dd><a href="/admin/calendar/title" target="_blank">校历标题修改</a></dd>
+                <dd><a href="/admin/calendar/type" target="_blank">校历类型修改</a></dd>
+                <dd><a href="/admin/calendar/replace" target="_blank">校历日期替换修改</a></dd>
+                <dt>通知</dt>
+                <dd><a href="/admin/notification" target="_blank">更新通知</a></dd>
+                <dt>多语言</dt>
+                <dd><a href="/admin/locale" target="_blank">多语言配置</a></dd>
+            </dl>
+        </div>
+    </div>
+    {/if}
+</div>
+</body>
+</html>

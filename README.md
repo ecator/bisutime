@@ -1,26 +1,73 @@
 # bisutime
 二外时间微信小程序，人性化告诉你现在第几节课，还有多久下课。
 
-# codes
-小程序具体代码，直接上传到微信服务器用。
+# client
+小程序客户端代码，可以直接上传到微信服务器。
 
-# docs
-文档和资源目录，小程序通过访问`https://ecator.github.io/bisutime/`来请求相关资源
+# server
+小程序服务端，用于动态请求一些配置，比如校历和多语言配置
 
-# config.json
-小程序配置文件，具体字段如下：
+> 服务器需要配置ssl
 
-## name：测试字段
-## notification：公告内容
+# 服务端api
+## getnotification
+获取通知
+
+### 返回参数
 - header：显示在头部中的信息
 - footer：显示在底部信息
-## start
-学期开学前一天的日期
+
+## getimg
+随机返回和语言数量相同的图片对象数组
+### 返回参数
+- src：图片绝对地址
+- photographer：作者
+
+## getcalendar
+返回校历对象
+
+### 返回参数
+- title：校历标题
+- start：时间对象，表示校历开始时间
+- end：时间对象，表示校历结束时间
+- holidays：假期数组
+	- start：开始时间对象
+	- end：结束时间对象
+- studies：调休数组
+	- start：开始时间对象
+	- end：结束时间对象
+- tests：考试数组
+	- start：开始时间对象
+	- end：结束时间对象
+- replacements：日期替换数组，采用文字描述的小日期方格数组（一般为节日）
+	- date：对应日期的时间对象
+	- title：替换显示的标题文字
+
+### 时间对象说明
+遵循JavaScript的Date对象原则：
 - year：四位数年份
 - month(0-11)：月份
 - date(1-31)：日期
-## format：时间返回格式
-### 字段解释
+- day(0-6)：星期几，0表示星期天
+- hours(0-23)：小时
+- minutes(0-59)：分钟数
+- seconds(0-59)：秒数
+- milliseconds(0-999)：毫秒数
+
+## getlocale
+获取多语言配置
+
+### 返回参数
+一个数组，各个成员包含了一种语言的各种属性：
+- language：语言代码，可以是如下值：
+	- zh：中文
+	- en：英语
+	- jp：日语
+	- kr：韩语
+	- ru: 俄语
+- name：语言名称
+- title：导航条标题
+- loading：加载文字
 - day：星期几
 - holiday：寒暑假情况
 - weekth：开学第几周
@@ -34,51 +81,12 @@
 - noon：午饭时间
 - dinner：晚饭时间
 - break：课间休息
-### format中的token（占位符）
+
+### token（占位符）
+主要用于多语言配置中动态显示一些数据，数据替换在客户端完成。
 - `{{day}}`：星期几
 - `{{weekth}}`：开学第几周
 - `{{next_time}}`：下个节点开始时间
 - `{{before}}`：前一节课
 - `{{next}}`：后一节课
-- `{{time}}`：当前课
-### 语言缩写解释
-- zh：中文
-- en：英语
-- jp：日语
-- kr：韩语
-- ru: 俄语
-## imgs：图片映射数组
-- src：图片绝对地址
-- photographer：作者
-
-# calendar.json
-校历配置文件，具体字段解释如下：
-
-## start
-校历开始月，为一个事件对象
-
-## end
-校历结束月，为一个时间对象
-
-## title
-校历显示标题
-
-## holidays
-假期数组：
-- start：开始时间对象
-- end：结束时间对象
-
-## studies
-调休数组：
-- start：开始时间对象
-- end：结束时间对象
-
-## tests
-考试数组：
-- start：开始时间对象
-- end：结束时间对象
-
-## smalls
-采用文字描述的小日期方格数组（一般为节日）：
-- date：对应日期
-- title：替换显示的标题文字
+- `{{current}}`：当前课

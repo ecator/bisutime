@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {include file="../app/admin/view/head.html" title="$title" /}
+    <link rel="stylesheet" href="/static/css/admin/locale.css">
+    <script src="/static/js/admin/locale.js"></script>
+</head>
+<body>
+<div class="container-fluid">
+    <!--定义rows-->
+    {assign name="rows" value="2" /}
+    {volist name="locales" id="locale"}
+    <div class="row">
+        <div class="col-xs-12">
+            <!--通过判断language是否为空来确认输出的form类型-->
+            {eq name="locale.language" value=""}
+            <form class="form-horizontal addlocale" action="/admin/locale/addlocale" method="post">
+                {else /}
+                <form class="form-horizontal setlocale" action="/admin/locale/setlocale" method="post">
+                    {/eq}
+                    <div class="form-group">
+                        <label class="col-xs-1 control-label">language</label>
+                        <div class="col-xs-2">
+                            {eq name="locale.language" value=""}
+                            <input type="text" class="form-control" placeholder="语言代码，比如zh、en" name="language" value="{$locale.language}">
+                            {else/}
+                            <input type="text" disabled class="form-control" placeholder="语言代码，比如zh、en" name="language" value="{$locale.language}">
+                            <!--被禁止的控件不会被提交，所以需要一个隐藏参数-->
+                            <input type="hidden" class="form-control" name="language" value="{$locale.language}">
+                            {/eq}
+                        </div>
+                        <label class="col-xs-1 control-label">name</label>
+                        <div class="col-xs-2">
+                            <input type="text" class="form-control" placeholder="语言名称" name="name" value="{$locale.name}">
+                        </div>
+                        <label class="col-xs-1 control-label">title</label>
+                        <div class="col-xs-2">
+                            <input type="text" class="form-control" placeholder="界面导航条标题显示文字" name="title" value="{$locale.title}">
+                        </div>
+                        <label class="col-xs-1 control-label">loading</label>
+                        <div class="col-xs-2">
+                            <input type="text" class="form-control" placeholder="界面加载提示文字" name="loading" value="{$locale.loading}">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-xs-12">
+                            <p class="help-block text-center">
+                               可用token（占位符）：{{day}}（星期几）、{{weekth}}（开学第几周）、{{next_time}}（距离下个节点开始时间）、{{before}}（前一节课）、{{next}}（后一节课）、{{current}}（当前课）
+                            </p>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-xs-1 control-label">day</label>
+                        <div class="col-xs-5">
+                            <textarea class="form-control" rows="{$rows}" placeholder="星期几" name="day">{$locale.day}</textarea>
+                        </div>
+                        <label class="col-xs-1 control-label">weekth</label>
+                        <div class="col-xs-5">
+                            <textarea class="form-control" rows="{$rows}" placeholder="开学周次" name="weekth">{$locale.weekth}</textarea>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-xs-1 control-label">saturday</label>
+                        <div class="col-xs-5">
+                            <textarea class="form-control" rows="{$rows}" placeholder="周六提示文字" name="saturday">{$locale.saturday}</textarea>
+                        </div>
+                        <label class="col-xs-1 control-label">sunday</label>
+                        <div class="col-xs-5">
+                            <textarea class="form-control" rows="{$rows}" placeholder="周日提示文字" name="sunday">{$locale.sunday}</textarea>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-xs-1 control-label">morning</label>
+                        <div class="col-xs-5">
+                            <textarea class="form-control" rows="{$rows}" placeholder="早上未上课提示文字" name="morning">{$locale.morning}</textarea>
+                        </div>
+                        <label class="col-xs-1 control-label">evening</label>
+                        <div class="col-xs-5">
+                            <textarea class="form-control" rows="{$rows}" placeholder="放学提示文字" name="evening">{$locale.evening}</textarea>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-xs-1 control-label">notfriday</label>
+                        <div class="col-xs-5">
+                            <textarea class="form-control" rows="{$rows}" placeholder="周一到周四提示文字" name="notfriday">{$locale.notfriday}</textarea>
+                        </div>
+                        <label class="col-xs-1 control-label">friday</label>
+                        <div class="col-xs-5">
+                            <textarea class="form-control" rows="{$rows}" placeholder="周五提示文字" name="friday">{$locale.friday}</textarea>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-xs-1 control-label">noon</label>
+                        <div class="col-xs-5">
+                            <textarea class="form-control" rows="{$rows}" placeholder="午饭提示文字" name="noon">{$locale.noon}</textarea>
+                        </div>
+                        <label class="col-xs-1 control-label">dinner</label>
+                        <div class="col-xs-5">
+                            <textarea class="form-control" rows="{$rows}" placeholder="晚饭提示文字" name="dinner">{$locale.dinner}</textarea>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-xs-1 control-label">lesson</label>
+                        <div class="col-xs-5">
+                            <textarea class="form-control" rows="{$rows}" placeholder="上课中提示文字" name="lesson">{$locale.lesson}</textarea>
+                        </div>
+                        <label class="col-xs-1 control-label">break</label>
+                        <div class="col-xs-5">
+                            <textarea class="form-control" rows="{$rows}" placeholder="课件休息提示文字" name="break">{$locale.break}</textarea>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-xs-1 control-label">holiday</label>
+                        <div class="col-xs-5">
+                            <textarea class="form-control" rows="{$rows}" placeholder="假期提示文字" name="holiday">{$locale.holiday}</textarea>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-xs-2 col-xs-offset-5">
+                            <!--通过判断language属性来动态输出提交按钮-->
+                            {eq name="locale.language" value=""}
+                            <input type="submit" class="btn btn-info btn-block" value="增加">
+                            {else/}
+                            <div class="row">
+                                <div class="col-xs-6">
+                                    <input type="submit" class="btn btn-primary btn-block" value="修改">
+                                </div>
+                                <div class="col-xs-6">
+                                    <a href="/admin/locale/dellocale?language={$locale.language}"
+                                       class="btn btn-danger btn-block">删除</a>
+                                </div>
+                            </div>
+                            {/eq}
+                        </div>
+                    </div>
+                </form>
+        </div>
+    </div>
+    {/volist}
+</div>
+</body>
+</html>

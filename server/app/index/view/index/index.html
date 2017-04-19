@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    {include file="../app/index/view/head.html" title="$title" /}
+    <link rel="stylesheet" href="/static/css/index.css">
+    <script src="/static/js/index.js"></script>
+</head>
+<body>
+<div class="container">
+    <div class="row header">
+        <div class="col-xs-12 col-sm-6">
+        <img src="/static/img/qrcode.gif" alt="二外时间" class="img-responsive qrcode">
+        </div>
+        <div class="col-xs-12 col-sm-6">
+            <form class="upload" action="/index/index/upload" method="post" enctype="multipart/form-data">
+                <h3>上传作品</h3>
+                <div class="form-group">
+                    <label for="photopath">照片</label>
+                    <p class="help-block">流量好贵的说，请尽量选择小于1M的照片(╥_╥)</p>
+                    <input type="file" accept="image/jpeg,image/bmp,image/png" id="photopath" name="photopath">
+                    <label for="photographer">作者</label>
+                    <input type="text" placeholder="取一个霸气的名字吧(゜ロ゜)" class="form-control" name="photographer" id="photographer">
+                    <input type="submit" name="upload" value="上传" class="btn btn-default">
+                    <p class="help-block">上传成功后需要通过审核才能被看到哟</p>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="gallery">
+        {volist name="list" id="photo"}
+        <div class="thumbnail">
+            <img src="{$photo.src}" alt="{$photo.photographer}">
+            <div class="caption">
+                Photo by {$photo.photographer}
+            </div>
+        </div>
+        {/volist}
+    </div>
+    <div class="modal fade bs-example-modal-lg" id="photomodal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <img src="" class="full-img">
+            </div>
+        </div>
+    </div>
+    <div class="footer">
+        &copy;二外时间&nbsp;&nbsp;&nbsp;<a href="mailto:bisutime@126.com">联系我们</a>&nbsp;&nbsp;&nbsp;<a href="/admin" target="_blank">网站后台</a>&nbsp;&nbsp;&nbsp;
+        <div class="time">{php}echo date("Y年n月j日 G时i分s秒");{/php}</div>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {include file="../app/admin/view/head.html" title="$title" /}
+</head>
+<body>
+<div class="container">
+    <form action="/admin/notification/setnotification" method="post">
+        <div class="form-group">
+            <h2>header</h2>
+            <textarea class="form-control input-lg" rows="3" name="header">{$notification.header}</textarea>
+            <h2>footer</h2>
+            <textarea class="form-control input-lg" rows="3" name="footer">{$notification.footer}</textarea>
+        </div>
+        <div class="form-group row">
+            <div class="col-xs-2 col-xs-offset-5">
+                <input type="submit" class="btn btn-warning btn-lg btn-block" name="submit" value="修改">
+            </div>
+        </div>
+    </form>
+</div>
+</body>
+</html>

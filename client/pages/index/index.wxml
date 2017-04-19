@@ -1,0 +1,22 @@
+	<image wx:if="{{locale.length==0}}" class="loading" mode="aspectFit" src="../../img/loading.gif"></image>
+	<swiper class="dashboard" current="{{langIndex}}" bindchange="changeLang">
+		<block wx:for="{{locale}}" wx:key="index">
+			<swiper-item>
+				<scroll-view class="container" scroll-y="{{true}}">
+					<view class="header">
+						<text class="notification">{{notification.header}}</text>
+					</view>
+					<view animation="{{contentAnima}}" class="content">
+						<text class="current">{{currents[index]}}</text>
+					</view>
+					<view wx:if="{{img[index]}}" class="gallery">
+						<image class="photo" data-src="{{img[index].src}}" src="{{img[index].src}}" mode="aspectFit" bindtap="preview"></image>
+						<text class="photographer" wx:if="{{img[index].photographer}}">photo by {{img[index].photographer}}</text>
+					</view>
+					<view class="footer">
+						<text class="notification">{{notification.footer}}</text>
+					</view>
+				</scroll-view>
+			</swiper-item>
+		</block>
+	</swiper>

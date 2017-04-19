@@ -36,4 +36,10 @@ jspm_packages
 # Optional REPL history
 .node_repl_history
 
-docs/img/*.exe
+# 服务器忽略文件
+server/.idea/
+server/public/bower/
+server/public/gallery/
+server/vendor/
+server/thinkphp/
+server/runtime/
