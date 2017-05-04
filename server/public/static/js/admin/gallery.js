@@ -53,9 +53,11 @@ function getGallerys() {
                 var tr="active";
             }
             var del="<button class='btn btn-danger' data-filename='"+item["filename"]+"'>删除</button>";
-            table+="<tr class='"+tr+"'><td>"+String(i+1)+"</td><td><img src='/gallery/"+item["filename"]+"' alt='"+item["photographer"]+"'></td><td>"+item["photographer"]+"</td><td>"+item["create_time"]+"</td><td>"+status+del+"</td></tr>";
+            table+="<tr class='"+tr+"'><td>"+String(i+1)+"</td><td><img class='lazy' src='/static/img/loading.gif' data-original='/gallery/"+item["filename"]+"' alt='"+item["photographer"]+"'></td><td>"+item["photographer"]+"</td><td>"+item["create_time"]+"</td><td>"+status+del+"</td></tr>";
         });
         table+="</table>";
         $(".container").html(table);
+        //延迟加载图片
+        $("img.lazy").lazyload({effect:"fadeIn",threshold:100});
     })
 }

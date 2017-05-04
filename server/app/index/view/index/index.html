@@ -29,7 +29,7 @@
     <div class="gallery">
         {volist name="list" id="photo"}
         <div class="thumbnail">
-            <img src="{$photo.src}" alt="{$photo.photographer}">
+            <img class="lazy" src="/static/img/loading.gif" data-original="{$photo.src}" alt="{$photo.photographer}">
             <div class="caption">
                 Photo by {$photo.photographer}
             </div>

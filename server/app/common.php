@@ -29,6 +29,9 @@ function getRandomImgs($max=20){
     $keys=array();
     $res=array();
     do{
+        if (count($gallerys)==0){
+            break;
+        }
         $key=rand(0,count($gallerys)-1);
         if (!array_keys($keys,$key,true) && file_exists(ROOT_PATH."public".DS."gallery".DS.$gallerys[$key]["filename"])){
             $keys[]=$key;

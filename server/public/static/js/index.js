@@ -28,4 +28,6 @@ $(document).ready(function () {
         var date=new Date;
         $(".time").text(date.getFullYear()+"年"+String(date.getMonth()+1)+"月"+date.getDate()+"日 "+date.getHours()+"时"+date.getMinutes()+"分"+date.getSeconds()+"秒");
     },1000);
+    //延迟加载图片
+    $("img.lazy").lazyload({effect:"fadeIn",threshold:1024});
 });
